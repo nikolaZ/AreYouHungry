@@ -1,0 +1,43 @@
+﻿using AreYouHungry.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Runtime.Serialization;
+using System.Text;
+
+namespace AreYouHungry.Services.Models
+{
+    [DataContract]
+    public class RestaurantShortModel
+    {
+        [DataMember(Name = "name")]
+        public string Name { get; set; }
+
+        [DataMember(Name = "address")]
+        public string Address { get; set; }
+
+        [DataMember(Name = "rating")]
+        public double Rating { get; set; }
+
+        [DataMember(Name = "photo")]
+        public PhotoModel Photo { get; set; }
+
+        public static Func<Restaurant, RestaurantShortModel> FromRestaurant
+        {
+            get
+            {
+                return r => new RestaurantShortModel
+                {
+                    Name = r.Name,
+                    Address = r.Address,
+                    Rating = r.Rating,
+                    Photo = new PhotoModel()
+                    {
+                        Url = r.Photos.First().Url
+                    }
+                };
+            }
+        }
+    }
+}
