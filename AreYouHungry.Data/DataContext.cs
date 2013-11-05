@@ -1,9 +1,10 @@
 ﻿using AreYouHungry.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
 
 namespace AreYouHungry.Data
 {
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContext<ApplicationUser>
     {
         public IDbSet<Cuisine> Cuisines { get; set; }
 
@@ -18,7 +19,7 @@ namespace AreYouHungry.Data
         public IDbSet<Review> Reviews { get; set; }
 
         public DataContext()
-            : base("AreYouHungry")
+            : base("AreYouHungry1")
         {
         }
     }

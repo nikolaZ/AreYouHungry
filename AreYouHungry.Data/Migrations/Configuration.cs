@@ -12,6 +12,7 @@ namespace AreYouHungry.Data.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
             ContextKey = "Data.DataContext";
         }
 

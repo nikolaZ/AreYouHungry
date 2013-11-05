@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web;
+using System.Web.Http;
 
 namespace AreYouHungry.Services.Controllers
 {
@@ -23,6 +24,7 @@ namespace AreYouHungry.Services.Controllers
             this.db = db;
         }
 
+        [Authorize]
         public HttpResponseMessage GetAll()
         {
             var result = this.PerformOperationAndHandleExceptions(
