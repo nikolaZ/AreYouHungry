@@ -23,7 +23,7 @@ namespace AreYouHungry.Data.Migrations
 
             if (!context.Restaurants.Any())
             {
-
+                //// Cuisines
                 var bulCuisine = context.Cuisines.Add(new AreYouHungry.Models.Cuisine()
                 {
                     Name = "Bulgarian"
@@ -44,6 +44,13 @@ namespace AreYouHungry.Data.Migrations
                     Name = "Vegeterian"
                 });
 
+                var fastFoodCuisine = context.Cuisines.Add(new AreYouHungry.Models.Cuisine()
+                {
+                    Name = "Fast Food"
+                });
+
+
+                //// Meal Categories
                 var saladCategory = context.MealCategories.Add(new AreYouHungry.Models.MealCategory()
                 {
                     Name = "Salad"
@@ -133,9 +140,61 @@ namespace AreYouHungry.Data.Migrations
                     Description = "asajnuilbwq jkaccns acsccacscawq fv btbe beb  ca sc"
                 });
 
+                //// Menu 2
+                List<Meal> meals2 = new List<Meal>();
+
+                meals2.Add(new Meal()
+                {
+                    MealCategory = spaghettiCategory,
+                    Name = "Spaghetti with ham",
+                    Price = 4.3M,
+                    Description = "asajnuilbwq jkaccns acsccacscawq fv btbe beb  ca sc"
+                });
+
+                meals2.Add(new Meal()
+                {
+                    MealCategory = soupCategory,
+                    Name = "Chicken soup",
+                    Price = 2.1M,
+                    Description = "asajnuilbwq jkaccns acsccacscawq fv btbe beb  ca sc"
+                });
+
+                meals2.Add(new Meal()
+                {
+                    MealCategory = mainCourseCategory,
+                    Name = "Chicken with mushrooms",
+                    Price = 5.3M,
+                    Description = "asajnuilbwq jkaccns acsccacscawq fv btbe beb  ca sc"
+                });
+
+                meals2.Add(new Meal()
+                {
+                    MealCategory = mainCourseCategory,
+                    Name = "Mushrooms risotto",
+                    Price = 3.8M,
+                    Description = "asajnuilbwq jkaccns acsccacscawq fv btbe beb  ca sc"
+                });
+
+                meals2.Add(new Meal()
+                {
+                    MealCategory = saladCategory,
+                    Name = "Shopska Salad",
+                    Price = 4.5M,
+                    Description = "asajnuilbwq jkaccns acsccacscawq fv btbe beb  ca sc"
+                });
+
+                meals2.Add(new Meal()
+                {
+                    MealCategory = dessertCategory,
+                    Name = "Pancakes",
+                    Price = 2.2M,
+                    Description = "asajnuilbwq jkaccns acsccacscawq fv btbe beb  ca sc"
+                });
+
                 context.Restaurants.Add(new Restaurant()
                 {
                     Name = "Classico",
+                    Logo = "http://www.gallodesign.mx/imagenes/corporativo/clientes/classico-logo.jpg",
                     Description = "Best restaurant ever. Offer everything you might want.",
                     Address = "Sofia, Mladost 1, Aleksandar Malinov 42",
                     Menu = meals,
@@ -149,6 +208,24 @@ namespace AreYouHungry.Data.Migrations
                         vegCuisine, bulCuisine
                     },
                     WorkingHours = "Mon - Sat : 09:00 - 22:30"
+                });
+
+                context.Restaurants.Add(new Restaurant()
+                {
+                    Name = "The House",
+                    Logo = "http://enphoto500x500.mnstatic.com/crab-house-restaurant_2700081.jpg",
+                    Description = "Recently opened restaurant.",
+                    Address = "Sofia, Studentski grad, 8mi dekemvri 9",
+                    Menu = meals2,
+                    PhoneNumbers = new List<string>()
+                    {
+                        "0878777567"
+                    },
+                    Cuisines = new List<Cuisine>()
+                    {
+                        vegCuisine, bulCuisine, itaCuisine
+                    },
+                    WorkingHours = "Mon - Sat : 08:00 - 23:30"
                 });
             }
 

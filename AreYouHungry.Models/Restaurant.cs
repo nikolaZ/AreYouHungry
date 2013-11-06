@@ -20,6 +20,8 @@ namespace AreYouHungry.Models
 
         public double Rating { get; set; }
 
+        public string Logo { get; set; }
+
         public virtual ICollection<Cuisine> Cuisines { get; set; }
 
         public ICollection<string> PhoneNumbers { get; set; }

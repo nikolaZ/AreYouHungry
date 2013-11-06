@@ -20,8 +20,8 @@ namespace AreYouHungry.Services.Models
         [DataMember(Name = "rating")]
         public double Rating { get; set; }
 
-        [DataMember(Name = "photo")]
-        public PhotoModel Photo { get; set; }
+        [DataMember(Name = "logo")]
+        public string Logo { get; set; }
 
         public static Func<Restaurant, RestaurantShortModel> FromRestaurant
         {
@@ -32,10 +32,7 @@ namespace AreYouHungry.Services.Models
                     Name = r.Name,
                     Address = r.Address,
                     Rating = r.Rating,
-                    Photo = new PhotoModel()
-                    {
-                        Url = r.Photos.First().Url
-                    }
+                    Logo = r.Logo
                 };
             }
         }

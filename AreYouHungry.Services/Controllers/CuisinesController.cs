@@ -24,14 +24,14 @@ namespace AreYouHungry.Services.Controllers
             this.db = db;
         }
 
-        [Authorize]
         public HttpResponseMessage GetAll()
         {
+            var user = User.Identity.Name;
             var result = this.PerformOperationAndHandleExceptions(
               () =>
               {
                   var models = db.Cuisines.All().Select(CuisineModel.FromCuisine);
-
+                  
                   HttpResponseMessage response = this.Request.CreateResponse(
                         HttpStatusCode.OK,
                         models);
