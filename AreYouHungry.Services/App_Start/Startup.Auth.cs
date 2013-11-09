@@ -14,18 +14,6 @@ using AreYouHungry.Models;
 
 namespace AreYouHungry.Services
 {
-    //public class Test
-    //{
-    //    public int Id { get; set; }
-    //    public int Proba { get; set; }
-    //}
-
-    //public class DataContext : IdentityDbContext<ApplicationUser>
-    //{
-    //    public IDbSet<Test> Tests { get; set; }
-
-    //    public DataContext() : base("DefaultConnection") { }
-    //}
     public partial class Startup
     {
         static Startup()

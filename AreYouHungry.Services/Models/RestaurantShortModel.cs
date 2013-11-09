@@ -11,6 +11,9 @@ namespace AreYouHungry.Services.Models
     [DataContract]
     public class RestaurantShortModel
     {
+        [DataMember(Name = "id")]
+        public int Id { get; set; }
+
         [DataMember(Name = "name")]
         public string Name { get; set; }
 
@@ -29,6 +32,7 @@ namespace AreYouHungry.Services.Models
             {
                 return r => new RestaurantShortModel
                 {
+                    Id = r.Id,
                     Name = r.Name,
                     Address = r.Address,
                     Rating = r.Rating,

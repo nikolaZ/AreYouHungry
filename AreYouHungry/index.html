@@ -1,12 +1,12 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
     <head>
         <title></title>
         <meta charset="utf-8" />
-        <!--<link href="scripts/libs/kendo/styles/kendo.common.min.css" />-->
-        <!--<link href="scripts/libs/kendo/styles/kendo.default.min.css" />-->
+        <!--<link href="scripts/libs/kendo/styles/kendo.common.min.css" />
+        <link href="scripts/libs/kendo/styles/kendo.default.min.css" />-->
         <link href="scripts/libs/kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
-        <!--<link href="styles/main.css" />-->
+        <link href="styles/main.css" rel="stylesheet"/>
         <link href="styles/app.css" rel="stylesheet" />
         
         <script src="cordova.js"></script>
@@ -18,6 +18,7 @@
         <script src="scripts/app-main.js"></script>
         <script src="scripts/app/http-request.js"></script>
         <script src="scripts/app/cuisines.js"></script>
+        <script src="scripts/app/restaurants.js"></script>
         <script src="scripts/app/home.js"></script>
         
     </head>
@@ -37,12 +38,15 @@
         </div>
         
         <script type="text/x-kendo-template" id="temp" >
-            <div class="lv-container">
-            <img class="item-photo" src="${logo}" />
-            <h3 class="item-title">${name}</h3>
-            <p class="item-info">${address}</p>
-            <a data-role="button" class="details-link">Order</a>
-            </div>
+            <li class="cuisine-container">
+                <a class="details-link"
+                   data-role="listview-link"
+                   href="views/restaurants-view.html\\#details?id=${id}">
+                    <img class=" item-photo" src="${logo}" />
+                    <h3 class="item-title">${name}</h3>
+                    <p class="item-info">${address}</p>
+                </a>
+            </li>
         </script>
 
         <!--Layout-->

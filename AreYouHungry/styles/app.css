@@ -8,11 +8,17 @@
     background-color: #974d2e;
 }
            
-#home .lv-container
+#home .cuisine-container
 {
     display:block;
     clear:both;
     float:none;
+    border-bottom: 1px solid #000;
+}  
+ 
+#home .cuisine-container:last-of-type
+{
+    border-bottom: 0 none;
 }  
  
 #home .item-photo

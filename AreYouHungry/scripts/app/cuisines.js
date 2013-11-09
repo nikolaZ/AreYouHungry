@@ -2,7 +2,7 @@ var app = app || {};
 
 (function(a) {
     var viewModel = kendo.observable({
-        cuisines:[]
+        cuisines: []
     });
     
     function init(e) {
