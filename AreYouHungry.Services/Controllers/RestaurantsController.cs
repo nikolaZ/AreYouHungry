@@ -64,5 +64,25 @@ namespace AreYouHungry.Services.Controllers
 
             return result;
         }
+
+        [Route("api/restaurants/menu/{restaurantId}")]
+        public HttpResponseMessage GetMenu(int restaurantId)
+        {
+            var user = User.Identity.Name;
+            var result = this.PerformOperationAndHandleExceptions(
+              () =>
+              {
+                  var models = db.Meals.All().Where(r => r.Restaurant.Id == restaurantId)
+                      .Select(MealShortModel.FromMeal);
+
+                  HttpResponseMessage response = this.Request.CreateResponse(
+                        HttpStatusCode.OK,
+                        models);
+
+                  return response;
+              });
+
+            return result;
+        }
     }
 }

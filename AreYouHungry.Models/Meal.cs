@@ -14,7 +14,7 @@ namespace AreYouHungry.Models
         [Range(0.01, double.PositiveInfinity)]
         public decimal Price { get; set; }
 
-        public virtual Photo Photo { get; set; }
+        public string Photo { get; set; }
 
         public virtual MealCategory MealCategory { get; set; }
 
@@ -22,7 +22,8 @@ namespace AreYouHungry.Models
         [StringLength(200, MinimumLength = 3)]
         public string Description { get; set; }
 
-        // Comments
+        [Required]
+        public virtual Restaurant Restaurant { get; set; }
 
         public Meal()
         {
