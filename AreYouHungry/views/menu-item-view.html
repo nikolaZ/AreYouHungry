@@ -1,0 +1,19 @@
+﻿<div data-role="view" id="menu-item-view" data-transition="slide" data-layout="main-layout" data-show="app.menuItem.init">
+    <header data-role="header">
+        <div data-role="navbar">
+            <a data-role="backbutton" data-align="left">Back</a>
+            <span data-role="view-title" data-bind="source: currentMenuItem, text: currentMenuItem.name"></span>
+        </div>
+    </header>
+
+    <div data-role="content">
+        <aside>
+            <span class="price"></span>
+            <a data-role="button" data-bind="click: goToMenu" data-icon="cart"></a>
+        </aside>
+        <img data-bind="source: currentMenuItem, attr: { src: currentMenuItem.photo }" class="item-photo">
+        <h2 data-bind="source: currentMenuItem, text: currentMenuItem.name"></h2>
+        <p data-bind="source: currentMenuItem, text: currentMenuItem.description"></p>
+        <span class="added"></span>
+    </div>
+</div>

@@ -49,6 +49,16 @@ namespace AreYouHungry.Data.Migrations
                     Name = "Fast Food"
                 });
 
+                var fishCuisine = context.Cuisines.Add(new AreYouHungry.Models.Cuisine()
+                {
+                    Name = "Fish and fish specialties"
+                });
+
+                var indianCuisine = context.Cuisines.Add(new AreYouHungry.Models.Cuisine()
+                {
+                    Name = "Indian"
+                });
+
 
                 //// Meal Categories
                 var saladCategory = context.MealCategories.Add(new AreYouHungry.Models.MealCategory()
@@ -113,6 +123,7 @@ namespace AreYouHungry.Data.Migrations
                     MealCategory = spaghettiCategory,
                     Name = "Spaghetti Boloneze",
                     Price = 4.3M,
+                    Photo = "http://www.jazzybonez.com/images/meals.jpg",
                     Description = "asajnuilbwq jkaccns acsccacscawq fv btbe beb  ca sc"
                 });
 
@@ -121,6 +132,7 @@ namespace AreYouHungry.Data.Migrations
                     MealCategory = mainCourseCategory,
                     Name = "Musaka",
                     Price = 2.3M,
+                    Photo = "http://www.jazzybonez.com/images/meals.jpg",
                     Description = "asajnuilbwq jkaccns acsccacscawq fv btbe beb  ca sc"
                 });
 
@@ -148,6 +160,7 @@ namespace AreYouHungry.Data.Migrations
                     MealCategory = spaghettiCategory,
                     Name = "Spaghetti with ham",
                     Price = 4.3M,
+                    Photo = "http://www.jazzybonez.com/images/meals.jpg",
                     Description = "asajnuilbwq jkaccns acsccacscawq fv btbe beb  ca sc"
                 });
 
@@ -156,6 +169,7 @@ namespace AreYouHungry.Data.Migrations
                     MealCategory = soupCategory,
                     Name = "Chicken soup",
                     Price = 2.1M,
+                    Photo = "http://www.jazzybonez.com/images/meals.jpg",
                     Description = "asajnuilbwq jkaccns acsccacscawq fv btbe beb  ca sc"
                 });
 

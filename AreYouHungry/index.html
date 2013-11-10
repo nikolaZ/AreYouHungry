@@ -19,6 +19,7 @@
         <script src="scripts/app/http-request.js"></script>
         <script src="scripts/app/cuisines.js"></script>
         <script src="scripts/app/restaurants.js"></script>
+        <script src="scripts/app/menu-items.js"></script>
         <script src="scripts/app/home.js"></script>
         
     </head>
@@ -32,17 +33,16 @@
             
             <ul id="custom-listview"
                 data-role="listview"
-                data-template="temp"
-                data-bind="source: topRestaurants">                
-            </ul>
+                data-template="restaurants-template"
+                data-bind="source: topRestaurants"></ul>
         </div>
         
-        <script type="text/x-kendo-template" id="temp" >
+        <script type="text/x-kendo-template" id="restaurants-template" >
             <li class="cuisine-container">
                 <a class="details-link"
                    data-role="listview-link"
-                   href="views/restaurants-view.html\\#details?id=${id}">
-                    <img class=" item-photo" src="${logo}" />
+                   href="views/restaurant-view.html\\#details?id=${id}">
+                    <img class="item-photo" src="${logo}" />
                     <h3 class="item-title">${name}</h3>
                     <p class="item-info">${address}</p>
                 </a>
@@ -64,6 +64,8 @@
                 <div data-role="tabstrip">
                     <a href="#home" data-icon="home">Home</a>
                     <a href="views/cuisines-view.html#cuisines-view" data-icon="contacts">Cuisines</a>
+                    <a href="#cart" data-icon="cart">Cart</a>
+                    <a href="#account" data-icon="contacts">Account</a>
                 </div>
             </div>
         </div>

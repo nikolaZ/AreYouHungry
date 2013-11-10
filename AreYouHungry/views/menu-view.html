@@ -1,0 +1,31 @@
+﻿<div id="menu-view"
+     data-role="view"
+     data-title="Menu"
+     data-layout="main-layout"
+     data-show="app.restaurant.menu.init">
+
+    <header data-role="header">
+        <div data-role="navbar">
+            <a data-role="backbutton" data-align="left">Back</a>
+            <span data-role="view-title">Item</span>
+        </div>
+    </header>
+
+    <ul id="menu-listview"
+        data-role="listview"
+        data-template="menu-template"
+        data-bind="source: currentMenu"></ul>
+</div>
+
+<script id="menu-template" type="text/x-kendo-template">
+    <li class="cuisine-container">
+        <a data-role="button"
+           data-item-id="#:id#">#:kendo.toString(price, "c")#</a>
+        <a class="details-link"
+           data-role="listview-link"
+           href="views/menu-item-view.html\\#menu-item-view?id=#:id#">
+            <img src="#:photo#" class="item-photo" style="width:50px; height:50px;" />
+            <h2 class="item-title">#:name#</h2>
+        </a>
+    </li>
+</script>

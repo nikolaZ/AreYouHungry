@@ -1,15 +1,16 @@
-﻿<div data-role="view" id="details" data-transition="slide" data-layout="main-layout" data-show="app.restaurant.init">
+﻿<div data-role="view" id="menu" data-transition="slide" data-layout="main-layout" data-show="app.restaurant.init">
     <header data-role="header">
         <div data-role="navbar">
             <a data-role="backbutton" data-align="left">Back</a>
-            <span data-role="view-title">Item</span>
+            <span data-role="view-title" 
+                  data-bind="source: currentRestaurant, text: currentRestaurant.name"></span>
         </div>
     </header>
 
     <div data-role="content">
         <aside>
             <span class="price"></span>
-            <a data-role="button">Order</a>
+            <a data-role="button" data-bind="click: goToMenu">Menu</a>        
         </aside>
         <h2 data-bind="source: currentRestaurant, text: currentRestaurant.name"></h2>
         <p data-bind="source: currentRestaurant, text: currentRestaurant.address"></p>
