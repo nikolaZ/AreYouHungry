@@ -26,6 +26,9 @@ namespace AreYouHungry.Services.Models
         [DataMember(Name = "logo")]
         public string Logo { get; set; }
 
+        [DataMember(Name = "description")]
+        public string Description { get; set; }
+
         public static Func<Restaurant, RestaurantShortModel> FromRestaurant
         {
             get
@@ -36,7 +39,8 @@ namespace AreYouHungry.Services.Models
                     Name = r.Name,
                     Address = r.Address,
                     Rating = r.Rating,
-                    Logo = r.Logo
+                    Logo = r.Logo,
+                    Description = r.Description
                 };
             }
         }

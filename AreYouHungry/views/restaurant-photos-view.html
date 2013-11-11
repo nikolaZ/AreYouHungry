@@ -1,0 +1,124 @@
+﻿<script>
+    window.dss = new kendo.data.DataSource({
+        type: "json",
+        transport: {
+            read: {
+                url: "http://localhost:2715/api/restaurants/1/photos"
+                //url: "http://demos.kendoui.com/service/Northwind.svc/Products"
+            }
+        },
+        serverPaging: false,
+        pageSize: 22,
+        schema: {
+            model: {
+                url: "url"
+            }
+        }
+    });
+
+    dss.read();
+</script>
+
+
+<div id="restaurant-photos-view"
+     data-role="view"
+     data-title="Gallery"
+     data-layout="main-layout"
+     data-show="app.restaurant.init">
+
+    <header data-role="header">
+        <div data-role="navbar">
+            <a data-role="backbutton" data-align="left">Back</a>
+            <span data-role="view-title">Gallery</span>
+        </div>
+    </header>
+
+    <div id="scrollview" data-source="dss" data-template="scrollview-template" data-role="scrollview">
+
+    </div>
+
+    <script id="scrollview-template" type="text/x-kendo-template">
+        <div data-role="page">
+            <div>
+                <img style="width: 80%; height: 120px;" src="#=url#" />
+                sssss
+            </div>
+        </div>
+    </script>
+</div>
+
+<!--<script id="scrollview-template" type="text/x-kendo-template"><div data-role="page">
+            <div>
+                <img style="width: 80%; height: 120px;" />
+                sssss
+            </div>
+</div></script>-->
+
+<script>
+
+    function initScrollView(e) {
+  
+        e.view.element.find("#scrollview").kendoMobileScrollView();
+    }
+
+    //var viewModel = kendo.observable({
+    //    dataSource: new kendo.data.DataSource({
+    //        type: "json",
+    //        transport: {
+    //            read: {
+    //                url: "http://localhost:2715/api/restaurants/1/photos"
+    //                //url: "http://demos.kendoui.com/service/Northwind.svc/Products"
+    //            }
+    //        },
+    //        serverPaging: true,
+    //        pageSize: 2,
+    //    schema: {
+    //    data: []
+    //    },
+    //change: function() {
+    //    this.set("data", this.view());
+    //}
+    //}),
+    //data: [] //use source binding to this field
+    //});
+
+    function test() {
+        kendo.bind($("#scrollview"), viewModel);
+    }
+
+
+    function init() {
+
+        $("#scrollview").kendoMobileScrollView({
+            dataSource: {
+                type: "json",
+                transport: {
+                    read: {
+                        url: "http://localhost:2715/api/restaurants/1/photos"
+                        //url: "http://demos.kendoui.com/service/Northwind.svc/Products"
+                    }
+                },
+                serverPaging: false,
+                pageSize: 33,
+                change: function () {
+                    console.log("qweeqwewq");
+                    this.transport.read();
+                },
+                schema: {
+                    model: {
+                        url: "url"
+                    }
+                }
+            },
+            itemsPerPage: 1,
+            template: $("#scrollview-template").html(),
+        });
+    }
+
+    function setBackground(id) {
+        return id;
+        return "url(" + id + ")";
+        return "url(http://demos.kendoui.com/content/web/foods/" + id + ".jpg)";
+    }
+</script>
+

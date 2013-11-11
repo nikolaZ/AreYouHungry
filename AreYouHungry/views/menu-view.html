@@ -1,13 +1,14 @@
 ﻿<div id="menu-view"
      data-role="view"
-     data-title="Menu"
      data-layout="main-layout"
      data-show="app.restaurant.menu.init">
 
     <header data-role="header">
         <div data-role="navbar">
             <a data-role="backbutton" data-align="left">Back</a>
-            <span data-role="view-title">Item</span>
+            <span data-role="view-title" 
+                  data-template="view-title"
+                  data-bind="source: currentRestaurant"></span>
         </div>
     </header>
 
@@ -17,10 +18,14 @@
         data-bind="source: currentMenu"></ul>
 </div>
 
+<script id="view-title" type="text/x-kendo-template">
+    #: name# - Menu
+</script>
+
 <script id="menu-template" type="text/x-kendo-template">
     <li class="cuisine-container">
         <a data-role="button"
-           data-item-id="#:id#">#:kendo.toString(price, "c")#</a>
+           data-item-id="#:id#" data-bind="source:this, click:addToCart">#:kendo.toString(price, "c")#</a>
         <a class="details-link"
            data-role="listview-link"
            href="views/menu-item-view.html\\#menu-item-view?id=#:id#">

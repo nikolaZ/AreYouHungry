@@ -2,7 +2,8 @@
 
 (function (a) {
     var viewModel = kendo.observable({
-        currentMenuItem: {}
+        currentMenuItem: {},
+        addToCart: app.cart.add
     });
 
     function init(e) {

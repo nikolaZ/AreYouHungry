@@ -14,6 +14,7 @@
         </aside>
         <h2 data-bind="source: currentRestaurant, text: currentRestaurant.name"></h2>
         <p data-bind="source: currentRestaurant, text: currentRestaurant.address"></p>
-        <span class="added"></span>
+        <p data-bind="source: currentRestaurant, text: currentRestaurant.description"></p>
+        <a data-role="button" data-bind="click: goToPhotos">Gallery</a> 
     </div>
 </div>

@@ -1,4 +1,5 @@
-window.httpRequest = (function(){
+window.httpRequest = (function () {
+
     function getJSON(url){
         var promise = new RSVP.Promise(function(resolve, reject){
             $.ajax({

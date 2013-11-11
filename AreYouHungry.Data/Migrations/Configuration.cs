@@ -221,6 +221,25 @@ namespace AreYouHungry.Data.Migrations
                     {
                         vegCuisine, bulCuisine
                     },
+                    Photos = new List<Photo>()
+                    {
+                        new Photo()
+                        {
+                            Url = "http://cateringconsultants.org.uk/wp-content/uploads/2013/04/restaurant.jpg"
+                        },
+                                                new Photo()
+                        {
+                            Url = "http://www.southpacifichotel.com.hk/images/photo-tour-pics/lu_lu_restaurant.jpg"
+                        },
+                                                new Photo()
+                        {
+                            Url = "http://www.digitaltrends.com/wp-content/uploads/2012/08/restaurant.jpeg"
+                        },
+                                                new Photo()
+                        {
+                            Url = "http://media.treehugger.com/assets/images/2011/10/Acorn-Restaurant1.jpg"
+                        },
+                    },
                     WorkingHours = "Mon - Sat : 09:00 - 22:30"
                 });
 

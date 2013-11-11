@@ -1,11 +1,8 @@
 ﻿using AreYouHungry.Data;
 using AreYouHungry.Services.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web;
 using System.Web.Http;
 
 namespace AreYouHungry.Services.Controllers
@@ -65,7 +62,27 @@ namespace AreYouHungry.Services.Controllers
             return result;
         }
 
-        [Route("api/restaurants/menu/{restaurantId}")]
+        [Route("api/restaurants/{restaurantId}/photos")]
+        public HttpResponseMessage GetPhotos(int restaurantId)
+        {
+            var user = User.Identity.Name;
+            var result = this.PerformOperationAndHandleExceptions(
+              () =>
+              {
+                  var models = db.Restaurants.All().Where(r => r.Id == restaurantId).FirstOrDefault().Photos
+                      .Select(PhotoModel.FromPhoto);
+
+                  HttpResponseMessage response = this.Request.CreateResponse(
+                        HttpStatusCode.OK,
+                        models);
+
+                  return response;
+              });
+
+            return result;
+        }
+
+        [Route("api/restaurants/{restaurantId}/menu")]
         public HttpResponseMessage GetMenu(int restaurantId)
         {
             var user = User.Identity.Name;

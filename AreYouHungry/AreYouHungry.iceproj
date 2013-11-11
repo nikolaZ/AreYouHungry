@@ -74,6 +74,7 @@
     <Content Include="scripts\app.js">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="scripts\app\cart.js" />
     <Content Include="scripts\app\cuisines.js">
       <SubType>Content</SubType>
     </Content>
@@ -292,6 +293,7 @@
     <Content Include="views\menu-item-view.html" />
     <Content Include="views\menu-view.html" />
     <Content Include="views\restaurant-view.html" />
+    <Content Include="views\restaurant-photos-view.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Resources\" />
