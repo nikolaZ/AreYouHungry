@@ -7,17 +7,32 @@
         currentPhotos: {},
         goToMenu: goToMenu,
         goToPhotos: goToPhotos,
-        addToCart: app.cart.add,
-        ds:[]
+        addToCart: onAddToCart,
+        purchasedQuantity: purchasedQuantity,
+        ds: []
     });
 
-function goToMenu() {
-    kendoApp.navigate("views/menu-view.html#menu-view?id=" + this.currentRestaurant.id);
-};
+    function purchasedQuantity(item) {
+        var result = app.cart.quantity(item);
+        return result;
+    };
 
-function goToPhotos() {
-    kendoApp.navigate("views/restaurant-photos-view.html#restaurant-photos-view?id=" + this.currentRestaurant.id);
-};
+    function onAddToCart(e) {
+        app.cart.add(e);
+
+        // force rebinding
+        var functionRebind = viewModel.purchasedQuantity;
+        viewModel.set("purchasedQuantity", -1);
+        viewModel.set("purchasedQuantity", functionRebind);
+    };
+
+    function goToMenu() {
+        kendoApp.navigate("views/menu-view.html#menu-view?id=" + this.currentRestaurant.id);
+    };
+
+    function goToPhotos() {
+        kendoApp.navigate("views/restaurant-photos-view.html#restaurant-photos-view?id=" + this.currentRestaurant.id);
+    };
 
     function init(e) {
         kendo.bind(e.view.element, viewModel);
@@ -26,8 +41,6 @@ function goToPhotos() {
         .then(function (currentRestaurant) {
             viewModel.set("currentRestaurant", currentRestaurant);
         });
-
-        tabstrip.badge(0, 5);
     }
 
     function menuInit(e) {
@@ -49,7 +62,7 @@ function goToPhotos() {
         httpRequest.getJSON(app.servicesBaseUrl + "restaurants/" + id + "/photos")
         .then(function (currentPhotos) {
             viewModel.set("currentPhotos", currentPhotos);
-         
+
             photos = currentPhotos;
 
             ds = new kendo.data.DataSource({

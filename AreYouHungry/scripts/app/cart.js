@@ -4,7 +4,8 @@
 
     var viewModel = kendo.observable({
         items: [],
-        total: 0
+        total: 0,
+        deleteItem: deleteFromCart
     });
 
     var cartItems = new kendo.data.DataSource({
@@ -17,6 +18,10 @@
                 totalPrice += cartItem.get("quantity") * cartItem.get("item.price");
             }
 
+            totalPrice = totalPrice.toFixed(2);
+
+            tabstrip.badge(2, cartItems.aggregates().quantity.sum);
+
             viewModel.set("total", totalPrice);
             viewModel.set("items", items);
         },
@@ -24,13 +29,18 @@
             model: {
                 fields: {
                     quantity: { type: "number" },
-                    item: {}
+                    item: {},
+                    deleteMode: { type: "boolean" }
+                },
+                subtotal: function () {
+                    return (this.get("quantity") * this.get("item").price).toFixed(2);
                 }
             }
-        }
+        },
+        aggregate: [{ field: "quantity", aggregate: "sum" }, ]
     });
 
-    addToCart = function (e) {
+    var addToCart = function (e) {
         var item = {};
 
         if (e.data.currentMenuItem) {
@@ -45,19 +55,31 @@
         if (foundItem) {
             foundItem.set("quantity", foundItem.quantity + 1);
         }
-        else {           
+        else {
             cartItems.add({
                 item: item,
                 quantity: 1,
-                sums: 0
             });
         }
+    };
 
-        var y = cartItems.data();
-        var tt = viewModel.total;
+    function deleteFromCart(e) {
+        var item = e.button.context.kendoBindingTarget.source.item;
+        var index = getIndex(item);
+        var dataItem = cartItems.at(index);
+        cartItems.remove(dataItem);
     }
 
-    findItem = function (item) {
+    var getQuantity = function (item) {
+        var foundItem = findItem(item);
+        if (foundItem) {
+            return foundItem.quantity;
+        }
+
+        return 0;
+    }
+
+    var findItem = function (item) {
         var length = cartItems.data().length;
         var data = cartItems.data();
 
@@ -68,10 +90,30 @@
         }
 
         return undefined;
+    };
+
+    var getIndex = function (item) {
+        var length = cartItems.data().length;
+        var data = cartItems.data();
+
+        for (var index = 0; index < length; index++) {
+            if (data[index].item.id === item.id) {
+                return index;
+            }
+        }
+
+        return -1;
+    };
+
+    function init(e) {
+        kendo.bind(e.view.element, viewModel);
     }
 
     a.cart = {
-        add: addToCart
+        init: init,
+        add: addToCart,
+        quantity: getQuantity,
+        find: findItem
     };
 
 }(app));

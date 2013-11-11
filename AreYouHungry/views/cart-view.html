@@ -1,0 +1,74 @@
+﻿<div id="cart-view"
+     data-id="cart-view"
+     data-role="view"
+     data-layout="main-layout"
+     data-title="Cart"
+     data-show="app.cart.init">
+
+    <header data-role="header">
+        <div data-role="navbar">
+            <a data-role="backbutton" data-align="left">Back</a>
+            <span data-role="view-title"></span>
+        </div>
+    </header>
+
+    <h2 data-bind="text: total">#:kendo.toString(total, "c")#</h2>
+
+    <ul id="menu-listview"
+        data-role="listview"
+        data-template="menu-template1"
+        data-bind="source: items">
+    </ul>
+</div>
+
+<script id="menu-template1" type="text/x-kendo-template">
+    <li class="cuisine-container">
+        <a data-role="button"
+           data-item-id="#: item.id#">#:kendo.toString(item.price, "c")#</a>
+
+        <div id="touchSurface"
+             data-role="touch"
+             data-enable-swipe="1"
+             data-bind="source: item"
+             data-swipe="myTouch.swipe"
+             data-hold="myTouch.hold">
+            Hold to Delete, Swipe Right to Add, Swipe Left to Remove
+        </div>
+
+            <img src="#:item.photo#" class="item-photo" style="width:50px; height:50px;" />
+            <h2 class="item-title"><input type="number" data-bind="value: quantity" min="1"/></h2>
+            <h2 class="item-title" data-bind="text: subtotal()"></h2>
+
+        <span data-bind="visible: deleteMode, click: deleteItem" data-role="button">Delete</span>
+       
+    </li>
+</script>
+
+<script>
+    window.myTouch = {
+        swipe: function (e) {
+            var direction = e.direction;
+            console.log(e);
+            var item = e.sender.events.currentTarget.kendoBindingTarget.source.item;
+            var found = app.cart.find(item);
+            var quantity = found.get("quantity");
+            if (direction == "left") {
+                if (quantity <= 1) {
+                    quantity = 2;
+                }
+
+                found.set("quantity", quantity - 1);
+            }
+            else if (direction == "right") {
+                found.set("quantity", quantity + 1);
+            }
+        },
+        hold: function (e) {
+            console.log(e);
+            var item = e.event.currentTarget.kendoBindingTarget.source.item;
+            var found = app.cart.find(item);
+            var deleteMode = found.get("deleteMode");
+            found.set("deleteMode", !deleteMode);
+        }
+    }
+</script>

@@ -287,6 +287,7 @@
     <Content Include="styles\main.css">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="views\cart-view.html" />
     <Content Include="views\cuisines-view.html">
       <SubType>Content</SubType>
     </Content>

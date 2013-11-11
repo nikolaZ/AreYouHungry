@@ -26,6 +26,9 @@
     <li class="cuisine-container">
         <a data-role="button"
            data-item-id="#:id#" data-bind="source:this, click:addToCart">#:kendo.toString(price, "c")#</a>
+
+        <span data-bind="text: purchasedQuantity"></span>
+
         <a class="details-link"
            data-role="listview-link"
            href="views/menu-item-view.html\\#menu-item-view?id=#:id#">
