@@ -20,20 +20,23 @@
 
             totalPrice = totalPrice.toFixed(2);
 
-            tabstrip.badge(2, cartItems.aggregates().quantity.sum);
+            setBadge(totalPrice);
 
-            viewModel.set("total", totalPrice);
+            // TODO Refactoring of statement
+            viewModel.set("total", kendo.toString(parseFloat(totalPrice), "c"));
             viewModel.set("items", items);
         },
         schema: {
             model: {
                 fields: {
-                    quantity: { type: "number" },
+                    quantity: { type: "number", validation: { min: 1}},
                     item: {},
                     deleteMode: { type: "boolean" }
                 },
                 subtotal: function () {
-                    return (this.get("quantity") * this.get("item").price).toFixed(2);
+                    var result = (this.get("quantity") * this.get("item").price).toFixed(2);
+                    var parsedResult = parseFloat(result);
+                    return kendo.toString(parsedResult, "c");
                 }
             }
         },
@@ -64,7 +67,8 @@
     };
 
     function deleteFromCart(e) {
-        var item = e.button.context.kendoBindingTarget.source.item;
+        //var item = e.button.context.kendoBindingTarget.source.item;
+        var item = e.data.item;
         var index = getIndex(item);
         var dataItem = cartItems.at(index);
         cartItems.remove(dataItem);
@@ -105,6 +109,40 @@
         return -1;
     };
 
+    var setBadge = function (totalPrice) {
+        if (cartItems.aggregates().quantity) {
+            tabstrip.badge(2, cartItems.aggregates().quantity.sum);
+        }
+        else {
+            var zero = (totalPrice - totalPrice).toFixed(0);
+            tabstrip.badge(2, zero);
+        }
+    };
+
+    var swipe = function (e) {
+        var direction = e.direction;
+        var item = e.sender.events.currentTarget.kendoBindingTarget.source.item;
+        var found = findItem(item);
+        var quantity = found.get("quantity");
+        if (direction == "left") {
+            if (quantity <= 1) {
+                quantity = 2;
+            }
+
+            found.set("quantity", quantity - 1);
+        }
+        else if (direction == "right") {
+            found.set("quantity", quantity + 1);
+        }
+    };
+
+    var hold = function (e) {
+        var item = e.event.currentTarget.kendoBindingTarget.source.item;
+        var found = findItem(item);
+        var deleteMode = found.get("deleteMode");
+        found.set("deleteMode", !deleteMode);
+    };
+
     function init(e) {
         kendo.bind(e.view.element, viewModel);
     }
@@ -113,7 +151,9 @@
         init: init,
         add: addToCart,
         quantity: getQuantity,
-        find: findItem
+        find: findItem,
+        swipe: swipe,
+        hold: hold
     };
 
 }(app));

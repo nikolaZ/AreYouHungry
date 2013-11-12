@@ -30,45 +30,15 @@
              data-role="touch"
              data-enable-swipe="1"
              data-bind="source: item"
-             data-swipe="myTouch.swipe"
-             data-hold="myTouch.hold">
+             data-swipe="app.cart.swipe"
+             data-hold="app.cart.hold">
             Hold to Delete, Swipe Right to Add, Swipe Left to Remove
         </div>
 
             <img src="#:item.photo#" class="item-photo" style="width:50px; height:50px;" />
-            <h2 class="item-title"><input type="number" data-bind="value: quantity" min="1"/></h2>
+            <h2 class="item-title"><input id="numeric-box" data-bind="value: quantity" min="1" max="99" data-decimals="0" data-format="\\#" data-role="numerictextbox" /></h2>
             <h2 class="item-title" data-bind="text: subtotal()"></h2>
 
         <span data-bind="visible: deleteMode, click: deleteItem" data-role="button">Delete</span>
-       
     </li>
-</script>
-
-<script>
-    window.myTouch = {
-        swipe: function (e) {
-            var direction = e.direction;
-            console.log(e);
-            var item = e.sender.events.currentTarget.kendoBindingTarget.source.item;
-            var found = app.cart.find(item);
-            var quantity = found.get("quantity");
-            if (direction == "left") {
-                if (quantity <= 1) {
-                    quantity = 2;
-                }
-
-                found.set("quantity", quantity - 1);
-            }
-            else if (direction == "right") {
-                found.set("quantity", quantity + 1);
-            }
-        },
-        hold: function (e) {
-            console.log(e);
-            var item = e.event.currentTarget.kendoBindingTarget.source.item;
-            var found = app.cart.find(item);
-            var deleteMode = found.get("deleteMode");
-            found.set("deleteMode", !deleteMode);
-        }
-    }
 </script>

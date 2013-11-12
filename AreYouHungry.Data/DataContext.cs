@@ -18,6 +18,10 @@ namespace AreYouHungry.Data
 
         public IDbSet<Review> Reviews { get; set; }
 
+        public IDbSet<CartLog> CartLogs { get; set; }
+
+        public IDbSet<CartLogMeal> CartLogMeals { get; set; }
+
         public DataContext()
             : base("AreYouHungry1")
         {

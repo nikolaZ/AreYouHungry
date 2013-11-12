@@ -19,6 +19,10 @@ namespace AreYouHungry.Data
 
         IRepository<Review> Reviews { get; }
 
+        IRepository<CartLog> CartLogs { get; }
+
+        IRepository<CartLogMeal> CartLogMeals { get; }
+
         DbContext GetContext();
 
         int SaveChanges();

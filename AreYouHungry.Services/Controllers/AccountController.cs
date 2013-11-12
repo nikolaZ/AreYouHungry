@@ -325,7 +325,8 @@ namespace AreYouHungry.Services.Controllers
             ApplicationUser user = new ApplicationUser
             {
                 UserName = model.UserName,
-                Email = model.Email
+                Email = model.Email,
+                Phone = model.Phone
             };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);

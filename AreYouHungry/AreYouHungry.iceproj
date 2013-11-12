@@ -291,6 +291,7 @@
     <Content Include="views\cuisines-view.html">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="views\error-view.html" />
     <Content Include="views\menu-item-view.html" />
     <Content Include="views\menu-view.html" />
     <Content Include="views\restaurant-view.html" />

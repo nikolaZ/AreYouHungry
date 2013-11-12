@@ -3,8 +3,8 @@
     <head>
         <title></title>
         <meta charset="utf-8" />
-        <!--<link href="scripts/libs/kendo/styles/kendo.common.min.css" />
-        <link href="scripts/libs/kendo/styles/kendo.default.min.css" />-->
+        <!--<link href="scripts/libs/kendo/styles/kendo.common.min.css" rel="stylesheet" />
+        <link href="scripts/libs/kendo/styles/kendo.default.min.css" rel="stylesheet" />-->
         <link href="scripts/libs/kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
         <link href="styles/main.css" rel="stylesheet"/>
         <link href="styles/app.css" rel="stylesheet" />
@@ -15,8 +15,8 @@
         <script src="scripts/libs/kendo/js/kendo.all.min.js"></script>
         <script src="scripts/libs/rsvp.min.js"></script>
 
-        <script src="scripts/app/home.js"></script>
         <script src="scripts/app-main.js"></script>
+        <script src="scripts/app/home.js"></script>
         <script src="scripts/app/cart.js"></script>
         <script src="scripts/app/http-request.js"></script>
         <script src="scripts/app/cuisines.js"></script>
@@ -49,6 +49,18 @@
                 </a>
             </li>
         </script>
+
+        <!--Error Modal View-->
+        <div data-role="modalview" id="error-view" data-title="Error" style="display: none; width: 95%; height: 90%;">
+            <div data-role="header">
+                <div data-role="navbar">
+                    <span data-role="view-title"></span>
+                    <a data-click="app.closeErrorModal" data-role="button" data-align="right">Close</a>
+                </div>
+            </div>
+
+            <div class="message"></div>
+        </div>
 
         <!--Layout-->
         <div data-role="layout" data-id="main-layout">

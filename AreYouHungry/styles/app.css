@@ -1,3 +1,8 @@
+.menu-item-photo {
+    width:100px;
+    height:100px;
+}
+
 #home .km-content
 {
     background-color: #f0f0f0;
@@ -114,4 +119,50 @@
 .km-wp .km-group-title .km-text h2
 {
     padding: 0 0 .1em .7em;
+}
+
+
+/*casccacsacs*/
+
+
+.k-numerictextbox .k-select .k-link span.k-i-arrow-n {
+    background-position: 0 -3px;
+}
+.k-numerictextbox .k-icon {
+    height: 20px;
+}
+:root * > .k-icon, *:root * > .k-sprite, *:root * > .k-button-group .k-tool-icon {
+    vertical-align: middle;
+}
+.k-icon, .k-tool-icon, .k-grouping-dropclue, .k-drop-hint, .k-column-menu .k-sprite {
+    background-image: url("../scripts/libs/kendo/styles/Default/sprite.png");
+    border-color: rgba(0, 0, 0, 0);
+}
+.k-icon, .k-state-disabled .k-icon, .k-column-menu .k-sprite {
+    opacity: 0.9;
+}
+.k-widget, .k-header, .k-content, .k-autocomplete .k-input, .k-picker-wrap .k-input, .k-dropdown-wrap .k-input, .k-picker-wrap .k-input, .k-numeric-wrap .k-input, .k-window-titlebar, .k-window-content, .k-link, .k-icon, .k-tool-icon, .k-splitbar {
+    -moz-box-sizing: content-box;
+}
+.k-icon, .k-sprite {
+    background-color: red;
+    border:1px solid #000;
+}
+.k-icon, .k-sprite, .k-button-group .k-tool-icon {
+    background-repeat: no-repeat;
+    display: inline-block;
+    font-size: 0;
+    line-height: 0;
+    overflow: hidden;
+    text-align: center;
+    text-indent: -3333px;
+    width: 35px;
+}
+.k-link {
+    cursor: pointer;
+}
+
+.kendo-nav, #example, #exampleTitle {
+    font-family: Arial,Helvetica,sans-serif;
+    font-weight: normal;
 }

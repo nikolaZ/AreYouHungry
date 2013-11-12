@@ -8,7 +8,8 @@ namespace AreYouHungry.Models
     {
         public int Id { get; set; }
 
-        //public ApplicationUser User { get; set; }
+        [Required]
+        public ApplicationUser User { get; set; }
 
         public double Rating { get; set; }
 
@@ -22,6 +23,7 @@ namespace AreYouHungry.Models
         [StringLength(100, MinimumLength = 3)]
         public string Cons { get; set; }
 
+        [Required]
         public DateTime Date { get; set; }
 
         public virtual ICollection<Photo> Photos { get; set; }

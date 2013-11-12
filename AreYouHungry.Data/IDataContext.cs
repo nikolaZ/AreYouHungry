@@ -18,5 +18,9 @@ namespace AreYouHungry.Data
         IDbSet<Restaurant> Restaurants { get; set; }
 
         IDbSet<Review> Reviews { get; set; }
+
+        IDbSet<CartLog> CartLogs { get; set; }
+
+        IDbSet<CartLogMeal> CartLogMeals { get; set; }
     }
 }

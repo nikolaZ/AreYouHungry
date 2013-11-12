@@ -50,8 +50,12 @@ namespace AreYouHungry.Services.Models
         public string ConfirmPassword { get; set; }
 
         [Required]
-        [Display(Name = "Email")]
+        [Display(Name = "E-mail")]
         public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "Phone Number")]
+        public string Phone { get; set; }
     }
 
     public class RegisterExternalBindingModel

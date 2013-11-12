@@ -1,6 +1,6 @@
 ﻿var app = app || {};
 
-(function (a) {
+(function (a, kendoApp) {
     var viewModel = kendo.observable({
         currentRestaurant: {},
         currentMenu: {},
@@ -13,15 +13,15 @@
     });
 
     function purchasedQuantity(item) {
-        var result = app.cart.quantity(item);
+        var result = a.cart.quantity(item);
         return result;
     };
 
     function onAddToCart(e) {
-        app.cart.add(e);
+        a.cart.add(e);
 
         // force rebinding
-        var functionRebind = viewModel.purchasedQuantity;
+        var functionRebind = viewModel.get("purchasedQuantity");
         viewModel.set("purchasedQuantity", -1);
         viewModel.set("purchasedQuantity", functionRebind);
     };
@@ -102,4 +102,4 @@
     a.restaurant.photos = {
         init: photosInit
     };
-}(app));
+}(app, kendoApp.app));

@@ -20,17 +20,6 @@ namespace AreYouHungry.Data
             this.context = context;
         }
 
-        //public IDbSet<Cuisine> Cuisines { get; set; }
-
-        //public IDbSet<Meal> Meals { get; set; }
-
-        //public IDbSet<MealCategory> MealCategories { get; set; }
-
-        //public IDbSet<Photo> Photos { get; set; }
-
-        //public IDbSet<Restaurant> Restaurants { get; set; }
-
-        //public IDbSet<Review> Reviews { get; set; }
         public IRepository<Cuisine> Cuisines
         {
             get
@@ -76,6 +65,22 @@ namespace AreYouHungry.Data
             get
             {
                 return this.GetRepository<Review>();
+            }
+        }
+
+        public IRepository<CartLog> CartLogs
+        {
+            get
+            {
+                return this.GetRepository<CartLog>();
+            }
+        }
+
+        public IRepository<CartLogMeal> CartLogMeals
+        {
+            get
+            {
+                return this.GetRepository<CartLogMeal>();
             }
         }
 
