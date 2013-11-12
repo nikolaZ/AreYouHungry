@@ -1,0 +1,23 @@
+﻿<div id="account-view"
+     data-id="account-register-view"
+     data-role="view"
+     data-layout="main-layout"
+     data-title="Register"
+     data-show="app.register.init">
+
+    <header data-role="header">
+        <div data-role="navbar">
+            <a data-role="backbutton" data-align="left">Back</a>
+            <span data-role="view-title"></span>
+        </div>
+    </header>
+
+    <div data-role="content">
+        <input type="text" placeholder="Username" data-bind="value: username" />
+        <input type="password" placeholder="Password" data-bind="value: password" />
+        <input type="text" placeholder="Email" data-bind="value: email" />
+        <input type="password" placeholder="Phone" data-bind="value: phone" />
+        <a data-role="button" data-bind="click: login">Log In</a>
+        <a data-bind="click: register" data-role="button">Register</a>
+    </div>
+</div>

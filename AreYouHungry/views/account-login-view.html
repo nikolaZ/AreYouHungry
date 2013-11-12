@@ -1,0 +1,22 @@
+﻿<div id="account-view"
+     data-id="account-login-view"
+     data-role="view"
+     data-layout="main-layout"
+     data-title="Login"
+     data-show="app.login.init">
+
+    <header data-role="header">
+        <div data-role="navbar">
+            <a data-role="backbutton" data-align="left">Back</a>
+            <span data-role="view-title"></span>
+        </div>
+    </header>
+
+    <div data-role="content">
+        <input type="text" placeholder="Username" data-bind="value: loginUsername" />
+        <input type="password" placeholder="Password" data-bind="value: loginPassword" />
+        <a data-role="button" data-bind="click: login">Log In</a>
+        <a data-bind="click: register" data-role="button">Register</a>
+        <a data-bind="visible: isAuthenticated, click: goToLogs" data-role="button">Logs</a>
+</div>
+</div>

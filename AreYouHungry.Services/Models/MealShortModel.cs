@@ -22,6 +22,9 @@ namespace AreYouHungry.Services.Models
         [DataMember(Name = "mealCategory")]
         public string MealCategory { get; set; }
 
+        [DataMember(Name = "restaurantName")]
+        public string RestaurantName { get; set; }
+
         public static Func<Meal, MealShortModel> FromMeal
         {
             get
@@ -31,8 +34,9 @@ namespace AreYouHungry.Services.Models
                     Id = meal.Id,
                     Name = meal.Name,
                     MealCategory = meal.MealCategory.Name,
+                    Price = meal.Price,
+                    RestaurantName = meal.Restaurant.Name,
                     Photo = meal.Photo,
-                    Price = meal.Price
                 };
             }
         }

@@ -26,7 +26,6 @@ namespace AreYouHungry.Services.Controllers
 
         public HttpResponseMessage GetAll()
         {
-            var user = User.Identity.Name;
             var result = this.PerformOperationAndHandleExceptions(
               () =>
               {

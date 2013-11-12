@@ -183,6 +183,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
+    <Compile Include="Controllers\CartLogsController.cs" />
     <Compile Include="Controllers\CuisinesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MealsController.cs" />
@@ -193,6 +194,8 @@
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CartLogMealModel.cs" />
+    <Compile Include="Models\CartLogModel.cs" />
     <Compile Include="Models\CuisineExtendedModel.cs" />
     <Compile Include="Models\CuisineModel.cs" />
     <Compile Include="Models\MealExtendedModel.cs" />

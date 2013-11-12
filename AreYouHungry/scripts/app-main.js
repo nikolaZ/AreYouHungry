@@ -17,5 +17,6 @@
     });
 
     global.app.servicesBaseUrl = "http://localhost:2715/api/";
+    global.app.baseUrl = "http://localhost:2715/";
 
 })(window);

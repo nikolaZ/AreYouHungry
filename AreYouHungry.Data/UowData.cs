@@ -20,6 +20,14 @@ namespace AreYouHungry.Data
             this.context = context;
         }
 
+        public IRepository<ApplicationUser> Users
+        {
+            get
+            {
+                return this.GetRepository<ApplicationUser>();
+            }
+        }
+
         public IRepository<Cuisine> Cuisines
         {
             get

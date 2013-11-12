@@ -7,6 +7,8 @@ namespace AreYouHungry.Data
 {
     public interface IUowData : IDisposable
     {
+        IRepository<ApplicationUser> Users { get; }
+
         IRepository<Cuisine> Cuisines { get; }
 
         IRepository<Meal> Meals { get; }

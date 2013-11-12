@@ -5,7 +5,9 @@
     var viewModel = kendo.observable({
         items: [],
         total: 0,
-        deleteItem: deleteFromCart
+        totalRaw: 0,
+        deleteItem: deleteFromCart,
+        checkout: checkout
     });
 
     var cartItems = new kendo.data.DataSource({
@@ -24,6 +26,7 @@
 
             // TODO Refactoring of statement
             viewModel.set("total", kendo.toString(parseFloat(totalPrice), "c"));
+            viewModel.set("totalRaw", totalPrice);
             viewModel.set("items", items);
         },
         schema: {
@@ -37,6 +40,11 @@
                     var result = (this.get("quantity") * this.get("item").price).toFixed(2);
                     var parsedResult = parseFloat(result);
                     return kendo.toString(parsedResult, "c");
+                },
+                subtotalRaw: function () {
+                    var result = (this.get("quantity") * this.get("item").price).toFixed(2);
+                    var parsedResult = parseFloat(result);
+                    return parsedResult;
                 }
             }
         },
@@ -73,6 +81,38 @@
         var dataItem = cartItems.at(index);
         cartItems.remove(dataItem);
     }
+
+    function checkout() {
+        // TODO: check for user and throw exception
+
+        var model = {
+            total: viewModel.get("totalRaw"),
+            meals: []
+        };
+
+        var items = cartItems.data();
+        for (var i = 0; i < items.length; i++) {
+            var cartItem = items[i];
+            var meal = {
+                name: cartItem.item.name,
+                quantity: cartItem.quantity,
+                price: cartItem.item.price,
+                subtotal: cartItem.subtotalRaw(),
+                restaurantName: cartItem.item.restaurantName
+            };
+
+            model.meals.push(meal);
+        }
+
+        var token = sessionStorage["accessToken"];
+        var header = {
+            Authorization: "Bearer " + token
+        };
+        httpRequest.postJSON(a.servicesBaseUrl + "cartlogs", model, header)
+            .then(function () {
+                console.log("yes");
+        })
+    };
 
     var getQuantity = function (item) {
         var foundItem = findItem(item);

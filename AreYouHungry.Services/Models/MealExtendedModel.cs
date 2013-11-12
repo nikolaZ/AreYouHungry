@@ -22,6 +22,9 @@ namespace AreYouHungry.Services.Models
         [DataMember(Name = "mealCategory")]
         public string MealCategory { get; set; }
 
+        [DataMember(Name = "restaurantName")]
+        public string RestaurantName { get; set; }
+
         [DataMember(Name = "description")]
         public string Description { get; set; }
 
@@ -33,10 +36,12 @@ namespace AreYouHungry.Services.Models
                 {
                     Id = meal.Id,
                     Name = meal.Name,
+                    Price = meal.Price,
+                    RestaurantName = meal.Restaurant.Name,
                     MealCategory = meal.MealCategory.Name,
                     Description = meal.Description,
                     Photo = meal.Photo,
-                    Price = meal.Price
+
                 };
             }
         }

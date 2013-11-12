@@ -74,6 +74,9 @@
     <Content Include="scripts\app.js">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="scripts\app\account-register.js" />
+    <Content Include="scripts\app\account-login.js" />
+    <Content Include="scripts\app\account.js" />
     <Content Include="scripts\app\cart.js" />
     <Content Include="scripts\app\cuisines.js">
       <SubType>Content</SubType>
@@ -287,6 +290,9 @@
     <Content Include="styles\main.css">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="views\account-login-view.html" />
+    <Content Include="views\account-register-view.html" />
+    <Content Include="views\account-view.html" />
     <Content Include="views\cart-view.html" />
     <Content Include="views\cuisines-view.html">
       <SubType>Content</SubType>

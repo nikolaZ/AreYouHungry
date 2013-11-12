@@ -28,7 +28,6 @@ namespace AreYouHungry.Services.Controllers
 
         public HttpResponseMessage GetDetails(int id)
         {
-            var user = User.Identity.Name;
             var result = this.PerformOperationAndHandleExceptions(
               () =>
               {

@@ -1,0 +1,29 @@
+﻿<div id="account-view"
+     data-id="account-view"
+     data-role="view"
+     data-layout="main-layout"
+     data-title="Log"
+     data-show="app.cartLogs.init">
+
+    <header data-role="header">
+        <div data-role="navbar">
+            <span data-role="view-title"></span>
+            <span data-role="button" data-align="right">Log Off</span>
+            <span data-role="backbutton" data-align="left">Back</span>
+        </div>
+        <h2><span class="user-name"></span>'s Order History</h2>
+    </header>
+
+    <ul id="menu-listview"
+        data-role="listview"
+        data-template="cart-logs-template"
+        data-bind="source: cartLogs[0].meals[0]"></ul>
+
+    <span data-bind="text: cartLogs[0].meals[0].name"></span>
+</div>
+
+<script id="cart-logs-template" type="text/x-kendo-template">
+    <li class="cuisine-container">
+        <a data-role="button">#: name#</a>
+    </li>
+</script>
