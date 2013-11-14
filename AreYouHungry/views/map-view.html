@@ -1,14 +1,17 @@
-﻿<div data-role="view" id="map-view" 
-     data-layout="main-layout" 
-     data-show="app.maps.init">
+﻿<div data-role="view" id="map-view"
+     data-id="map-view"
+     data-layout="main-layout"
+     data-title="Location"
+     data-show="app.maps.init"
+     data-stretch="true">
 
     <header data-role="header">
         <div data-role="navbar">
             <a data-role="backbutton" data-align="left">Back</a>
-            <span data-role="view-title" data-bind="text: currentRestaurant.name"></span>
+            <span data-role="view-title"></span>
         </div>
     </header>
 
     <div id="map"></div>
-
+    <div id="map-canvas"></div>
 </div>
