@@ -1,5 +1,5 @@
-﻿<div data-role="view" id="map-view"
-     data-id="map-view"
+﻿<div data-role="view" id="maps-view"
+     data-id="maps-view"
      data-layout="main-layout"
      data-title="Location"
      data-show="app.maps.init"
@@ -12,6 +12,9 @@
         </div>
     </header>
 
-    <div id="map"></div>
-    <div id="map-canvas"></div>
+    <div id="no-map" data-bind="invisible: isGoogleMapsInitialized">
+        Location requires internet connection to display the map.
+    </div>
+
+    <div id="map-canvas" data-bind="visible: isGoogleMapsInitialized"></div>
 </div>

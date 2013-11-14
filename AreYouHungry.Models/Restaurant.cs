@@ -16,9 +16,9 @@ namespace AreYouHungry.Models
         [StringLength(350, MinimumLength = 3)]
         public string Address { get; set; }
 
-        public decimal Latitude { get; set; }
+        public double Latitude { get; set; }
 
-        public decimal Longitude { get; set; }
+        public double Longitude { get; set; }
 
         public string WorkingHours { get; set; }
 

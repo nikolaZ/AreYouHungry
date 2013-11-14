@@ -25,7 +25,8 @@ var app = app || {};
                 viewModel.set("topRestaurants", topRestaurants);
 
             }, function () {
-
+                navigator.notification.alert("Unable to determine current location. Cannot connect to GPS satellite.",
+                       function () { }, "Location failed", 'OK');
                 kendoApp.hideLoading();
                 $("#error-view").show().data().kendoMobileModalView.open();
 

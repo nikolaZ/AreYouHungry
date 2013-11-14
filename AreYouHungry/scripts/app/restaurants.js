@@ -30,6 +30,7 @@
     };
 
     function goToMenu() {
+        debugger
         kendoApp.navigate("views/menu-view.html#menu-view?id=" + this.currentRestaurant.id);
     };
 
@@ -42,7 +43,7 @@
     }
 
     function goToMap() {
-        kendoApp.navigate("views/map-view.html#map-view?id=" + this.currentRestaurant.id);
+        kendoApp.navigate("views/restaurant-map-view.html#map-view?id=" + this.currentRestaurant.id);
     }
 
     function init(e) {
@@ -55,6 +56,7 @@
     }
 
     function menuInit(e) {
+        debugger
         kendo.bind(e.view.element, viewModel);
         var id = parseInt(e.view.params.id);
         httpRequest.getJSON(app.servicesBaseUrl + "restaurants/" + id + "/menu")

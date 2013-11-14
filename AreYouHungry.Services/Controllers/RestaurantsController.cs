@@ -26,7 +26,6 @@ namespace AreYouHungry.Services.Controllers
         [Route("api/restaurants/top")]
         public HttpResponseMessage GetTop()
         {
-            var user = User.Identity.Name;
             var result = this.PerformOperationAndHandleExceptions(
               () =>
               {
@@ -44,7 +43,6 @@ namespace AreYouHungry.Services.Controllers
 
         public HttpResponseMessage GetAll()
         {
-            var user = User.Identity.Name;
             var result = this.PerformOperationAndHandleExceptions(
               () =>
               {
@@ -64,7 +62,6 @@ namespace AreYouHungry.Services.Controllers
         [Route("api/restaurants/details/{restaurantId}")]
         public HttpResponseMessage GetDetails(int restaurantId)
         {
-            var user = User.Identity.Name;
             var result = this.PerformOperationAndHandleExceptions(
               () =>
               {
@@ -85,7 +82,6 @@ namespace AreYouHungry.Services.Controllers
         [Route("api/restaurants/{restaurantId}/photos")]
         public HttpResponseMessage GetPhotos(int restaurantId)
         {
-            var user = User.Identity.Name;
             var result = this.PerformOperationAndHandleExceptions(
               () =>
               {
@@ -105,12 +101,31 @@ namespace AreYouHungry.Services.Controllers
         [Route("api/restaurants/{restaurantId}/menu")]
         public HttpResponseMessage GetMenu(int restaurantId)
         {
-            var user = User.Identity.Name;
             var result = this.PerformOperationAndHandleExceptions(
               () =>
               {
                   var models = db.Meals.All().Where(r => r.Restaurant.Id == restaurantId)
                       .Select(MealShortModel.FromMeal);
+
+                  HttpResponseMessage response = this.Request.CreateResponse(
+                        HttpStatusCode.OK,
+                        models);
+
+                  return response;
+              });
+
+            return result;
+        }
+
+        [Route("api/restaurants/{restaurantId}/map")]
+        public HttpResponseMessage GetRestaurantMap(int restaurantId)
+        {
+            var result = this.PerformOperationAndHandleExceptions(
+              () =>
+              {
+                  var models = db.Restaurants.All().Where(r => r.Id == restaurantId)
+                      .Select(RestaurantMapModel.FromRestaurant)
+                      .FirstOrDefault();
 
                   HttpResponseMessage response = this.Request.CreateResponse(
                         HttpStatusCode.OK,

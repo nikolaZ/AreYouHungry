@@ -186,9 +186,9 @@
     <Compile Include="Controllers\CartLogsController.cs" />
     <Compile Include="Controllers\CuisinesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MapsController.cs" />
     <Compile Include="Controllers\MealsController.cs" />
     <Compile Include="Controllers\RestaurantsController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -201,6 +201,7 @@
     <Compile Include="Models\MealExtendedModel.cs" />
     <Compile Include="Models\MealShortModel.cs" />
     <Compile Include="Models\PhotoModel.cs" />
+    <Compile Include="Models\RestaurantMapModel.cs" />
     <Compile Include="Models\RestaurantShortModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
@@ -257,6 +258,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Maps\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
