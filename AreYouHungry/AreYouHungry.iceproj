@@ -87,7 +87,9 @@
     <Content Include="scripts\app\http-request.js">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="scripts\app\maps.js" />
     <Content Include="scripts\app\menu-items.js" />
+    <Content Include="scripts\app\restaurants-all.js" />
     <Content Include="scripts\app\restaurants.js" />
     <Content Include="scripts\libs\kendo\js\jquery.min.js">
       <SubType>Content</SubType>
@@ -298,10 +300,12 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="views\error-view.html" />
+    <Content Include="views\map-view.html" />
     <Content Include="views\menu-item-view.html" />
     <Content Include="views\menu-view.html" />
     <Content Include="views\restaurant-view.html" />
     <Content Include="views\restaurant-photos-view.html" />
+    <Content Include="views\restaurants-view.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Resources\" />

@@ -23,6 +23,7 @@ namespace AreYouHungry.Services.Controllers
             this.db = db;
         }
 
+        [Route("api/restaurants/top")]
         public HttpResponseMessage GetTop()
         {
             var user = User.Identity.Name;
@@ -31,6 +32,25 @@ namespace AreYouHungry.Services.Controllers
               {
                   var models = db.Restaurants.All().OrderByDescending(r=> r.Rating).Take(5).Select(RestaurantShortModel.FromRestaurant);
                   
+                  HttpResponseMessage response = this.Request.CreateResponse(
+                        HttpStatusCode.OK,
+                        models);
+
+                  return response;
+              });
+
+            return result;
+        }
+
+        public HttpResponseMessage GetAll()
+        {
+            var user = User.Identity.Name;
+            var result = this.PerformOperationAndHandleExceptions(
+              () =>
+              {
+                  var models = db.Restaurants.All().OrderByDescending(r => r.Rating)
+                      .Select(RestaurantShortModel.FromRestaurant);
+
                   HttpResponseMessage response = this.Request.CreateResponse(
                         HttpStatusCode.OK,
                         models);

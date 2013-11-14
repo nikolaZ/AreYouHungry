@@ -16,6 +16,9 @@ namespace AreYouHungry.Services.Models
         [DataMember(Name = "total")]
         public decimal Total { get; set; }
 
+        [DataMember(Name = "logDateTime")]
+        public System.DateTime LogDateTime { get; set; }
+
         public static Expression<Func<CartLog, CartLogModel>> FromCartLog
         {
             get
@@ -23,6 +26,7 @@ namespace AreYouHungry.Services.Models
                 return cartLog => new CartLogModel
                 {
                     Total = cartLog.Total,
+                    LogDateTime = cartLog.LogDateTime,
                     Meals = cartLog.Meals.Select(meal => new CartLogMealModel()
                     {
                         Name = meal.Name,

@@ -1,4 +1,4 @@
-﻿<script>
+﻿<!--<script>
     window.dss = new kendo.data.DataSource({
         type: "json",
         transport: {
@@ -17,14 +17,14 @@
     });
 
     dss.read();
-</script>
+</script>-->
 
 
 <div id="restaurant-photos-view"
      data-role="view"
      data-title="Gallery"
      data-layout="main-layout"
-     data-show="app.restaurant.init">
+     data-show="app.restaurant.photos.init">
 
     <header data-role="header">
         <div data-role="navbar">
@@ -33,16 +33,14 @@
         </div>
     </header>
 
-    <div id="scrollview" data-source="dss" data-template="scrollview-template" data-role="scrollview">
-
+    <div id="scrollview"  data-template="scrollview-template" data-role="scrollview">
+        <div data-role="page">Foo</div>
+        <div data-role="page">Bar</div>
     </div>
 
     <script id="scrollview-template" type="text/x-kendo-template">
-        <div data-role="page">
-            <div>
-                <img style="width: 80%; height: 120px;" src="#=url#" />
-                sssss
-            </div>
+        <div data-role="page">            
+                <img style="width: 10%; height: 120px;" src="#: url#" />
         </div>
     </script>
 </div>
@@ -56,10 +54,10 @@
 
 <script>
 
-    function initScrollView(e) {
+    //function initScrollView(e) {
   
-        e.view.element.find("#scrollview").kendoMobileScrollView();
-    }
+    //    e.view.element.find("#scrollview").kendoMobileScrollView();
+    //}
 
     //var viewModel = kendo.observable({
     //    dataSource: new kendo.data.DataSource({
@@ -82,43 +80,40 @@
     //data: [] //use source binding to this field
     //});
 
-    function test() {
-        kendo.bind($("#scrollview"), viewModel);
-    }
+    //function test() {
+    //    kendo.bind($("#scrollview"), viewModel);
+    //}
 
 
-    function init() {
+    //function init() {
 
-        $("#scrollview").kendoMobileScrollView({
-            dataSource: {
-                type: "json",
-                transport: {
-                    read: {
-                        url: "http://localhost:2715/api/restaurants/1/photos"
-                        //url: "http://demos.kendoui.com/service/Northwind.svc/Products"
-                    }
-                },
-                serverPaging: false,
-                pageSize: 33,
-                change: function () {
-                    console.log("qweeqwewq");
-                    this.transport.read();
-                },
-                schema: {
-                    model: {
-                        url: "url"
-                    }
-                }
-            },
-            itemsPerPage: 1,
-            template: $("#scrollview-template").html(),
-        });
-    }
+    //    $("#scrollview").kendoMobileScrollView({
+    //        dataSource: {
+    //            type: "json",
+    //            transport: {
+    //                read: {
+    //                    url: "http://localhost:2715/api/restaurants/1/photos"
+    //                    //url: "http://demos.kendoui.com/service/Northwind.svc/Products"
+    //                }
+    //            },
+    //            serverPaging: false,
+    //            pageSize: 33,
+    //            change: function () {
+    //                console.log("qweeqwewq");
+    //                this.transport.read();
+    //            },
+    //            schema: {
+    //            }
+    //        },
+    //        itemsPerPage: 1,
+    //        template: $("#scrollview-template").html(),
+    //    });
+    //}
 
-    function setBackground(id) {
-        return id;
-        return "url(" + id + ")";
-        return "url(http://demos.kendoui.com/content/web/foods/" + id + ".jpg)";
-    }
+    //function setBackground(id) {
+    //    return id;
+    //    return "url(" + id + ")";
+    //    return "url(http://demos.kendoui.com/content/web/foods/" + id + ".jpg)";
+    //}
 </script>
 

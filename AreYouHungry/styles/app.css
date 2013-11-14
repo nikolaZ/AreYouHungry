@@ -2,7 +2,12 @@
     width:100px;
     height:100px;
 }
-
+#map {
+            width:300px;
+            height:300px;
+            display:inline-block;
+            float:left;
+        }
 #home .km-content
 {
     background-color: #f0f0f0;

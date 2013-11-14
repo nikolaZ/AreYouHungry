@@ -2,7 +2,22 @@
 
 (function (a) {
     var viewModel = kendo.observable({
-        cartLogs: []
+        cartLogs: [],
+        cartLogsDs: [],
+        getMore: function () {
+            headers = {
+                Authorization: "Bearer " + sessionStorage["accessToken"]
+            };
+            httpRequest.getJSON(app.servicesBaseUrl + "cartLogs", headers)
+            .then(function (cartLogs) {
+                debugger
+                console.log(viewModel.get("cartLogsDs"));
+                $.merge(cartLogs, viewModel.get("cartLogsDs")._pristine);
+                console.log(viewModel.get("cartLogsDs").data().length);
+                viewModel.get("cartLogsDs").data(cartLogs);
+                console.log(viewModel.get("cartLogsDs").data().length);
+            })
+        }
     });
 
     // TODO: check for user and throw exception
@@ -10,20 +25,38 @@
     function init(e) {
         kendo.bind(e.view.element, viewModel);
 
-        var token = sessionStorage["accessToken"];
-        var header = {
-            Authorization: "Bearer " + token
-        };
-
-        httpRequest.getJSON(app.servicesBaseUrl + "cartLogs", header)
+        httpRequest.getJSON(app.servicesBaseUrl + "cartLogs", { Authorization: "Bearer " + sessionStorage["accessToken"] })
         .then(function (cartLogs) {
-            console.log(cartLogs);
-            console.log(cartLogs[0].meals);
-            console.log(cartLogs[0].meals[0]);
-            console.log(cartLogs[0].meals[0].name);
             viewModel.set("cartLogs", cartLogs);
+
+            var dataSource = new kendo.data.DataSource({
+                data: cartLogs,
+                //group: "logDateTime"
+            });
+            viewModel.set("cartLogsDs", dataSource);
         });
-    }
+    }   
+            //ds = new kendo.data.DataSource({
+                //data: cartLogs,
+                //group: "logDateTime" 
+            //});
+            //ds.read();
+
+            //for (var i = 0; i < cartLogs.length; i++) {
+            //    ds.add(cartLogs[i]);
+
+            //}
+
+           // console.log(ds.data());
+           // viewModel.set("cartLogsDs", ds);
+
+        //});
+
+        
+
+        //console.log(dataSourceS.data());
+        //viewModel.set("cartLogsDs", dataSourceS);
+   // }
 
     a.cartLogs = {
         init: init

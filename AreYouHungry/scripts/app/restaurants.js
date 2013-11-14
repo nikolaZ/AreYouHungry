@@ -7,9 +7,12 @@
         currentPhotos: {},
         goToMenu: goToMenu,
         goToPhotos: goToPhotos,
+        goToReviewWriting: goToReviewWriting,
+        goToMap: goToMap,
         addToCart: onAddToCart,
         purchasedQuantity: purchasedQuantity,
-        ds: []
+        ds: [],
+        dds: {},
     });
 
     function purchasedQuantity(item) {
@@ -34,6 +37,14 @@
         kendoApp.navigate("views/restaurant-photos-view.html#restaurant-photos-view?id=" + this.currentRestaurant.id);
     };
 
+    function goToReviewWriting() {
+        kendoApp.navigate("views/restaurant-photos-view.html#restaurant-photos-view?id=" + this.currentRestaurant.id);
+    }
+
+    function goToMap() {
+        kendoApp.navigate("views/map-view.html#map-view?id=" + this.currentRestaurant.id);
+    }
+
     function init(e) {
         kendo.bind(e.view.element, viewModel);
         var id = parseInt(e.view.params.id);
@@ -53,10 +64,8 @@
     }
 
     var photos = [];
-
-
-
     function photosInit(e) {
+        debugger
         kendo.bind(e.view.element, viewModel);
         var id = parseInt(e.view.params.id);
         httpRequest.getJSON(app.servicesBaseUrl + "restaurants/" + id + "/photos")
@@ -65,7 +74,7 @@
 
             photos = currentPhotos;
 
-            ds = new kendo.data.DataSource({
+            var ds = new kendo.data.DataSource({
                 type: "json",
                 transport: {
                     read: {
@@ -83,10 +92,29 @@
             });
 
             viewModel.set("ds", ds);
+            debugger
+            var dds = new kendo.data.DataSource({
+                data: currentPhotos
+            });
+            dds.read();
+
+            var t = e.view.element.find("#scrollview-template").html();
+            var template = kendo.template(t);
+            var result = "";
+            for (var i = 0; i < currentPhotos.length; i++) {
+                result += template(currentPhotos[i]);
+            }
+            debugger
+            var c = e.view.element.find("#scrollview")
+                c = c.data("kendoMobileScrollView");
+                console.log(c);
+                c.content(result);
+            debugger
         });
+        
 
         var c = e.view.element.find("#scrollview");
-        var t = e.view.element.find("#scrollview-template").html();
+        
 
         kendo.bind($(c), viewModel);
     }

@@ -83,6 +83,7 @@ namespace AreYouHungry.Services.Controllers
                       .Select(cartLog => new CartLogModel
                 {
                     Total = cartLog.Total,
+                    LogDateTime = cartLog.LogDateTime,
                     Meals = cartLog.Meals.Select(meal => new CartLogMealModel()
                     {
                         Name = meal.Name,
@@ -90,7 +91,7 @@ namespace AreYouHungry.Services.Controllers
                         Quantity = meal.Quantity,
                         Price = meal.Price,
                         RestaurantName = meal.RestaurantName
-                    })
+                    }).ToList()
                 });
 
                   HttpResponseMessage response = this.Request.CreateResponse(

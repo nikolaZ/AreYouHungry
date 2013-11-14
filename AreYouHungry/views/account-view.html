@@ -14,16 +14,61 @@
         <h2><span class="user-name"></span>'s Order History</h2>
     </header>
 
-    <ul id="menu-listview"
-        data-role="listview"
-        data-template="cart-logs-template"
-        data-bind="source: cartLogs[0].meals[0]"></ul>
+    <span data-role="button" data-bind="click: getMore">get more</span>
 
-    <span data-bind="text: cartLogs[0].meals[0].name"></span>
+        <ul id="logs-listview"
+            data-role="listview"
+            data-header-template="header-template"
+            data-template="cart-logs-template"
+            data-bind="source: cartLogsDs"></ul>
+
 </div>
 
 <script id="cart-logs-template" type="text/x-kendo-template">
     <li class="cuisine-container">
-        <a data-role="button">#: name#</a>
+        <div>
+            <a data-role="button">#: total#</a>
+            <ul id="test-listview"
+                data-role="listview"
+                data-template="cart-logs-item-template"
+                data-bind="source: meals"></ul>
+        </div>
     </li>
+</script>
+
+<script id="cart-logs-item-template" type="text/x-kendo-template">
+    <li class="container">
+        <a data-role="button">#: name#</a>
+        <a data-role="button">#: subtotal#</a>
+    </li>
+</script>
+
+<script type="text/x-kendo-template" id="header-template">
+    my group - #: value #
+</script>
+
+<script id="itemGroupHeader" type="text/x-kendo-template">
+    #=kendo.toString(value, 'dddd MMMM d HH:mm')#
+</script>
+
+<script>
+    //var viewModel = kendo.observable({
+    //    cartLogs: [],
+    //    cartLogsDs: [],
+    //    getMore: function () {
+    //    }
+    //});
+
+    //httpRequest.getJSON(app.servicesBaseUrl + "cartLogs", { Authorization: "Bearer " + sessionStorage["accessToken"] })
+    //    .then(function (cartLogs) {
+    //        viewModel.set("cartLogs", cartLogs);
+
+    //        var dataSource = new kendo.data.DataSource({
+    //            data: cartLogs,
+    //            group: "logDateTime"
+    //        });
+
+    //        viewModel.set("cartLogsDs", dataSource);
+
+    //    });
 </script>
