@@ -6,12 +6,18 @@
         loginPassword: "123456",
         isAuthenticated: false,
         login: login,
-        register: register,
-        goToLogs: goToLogs
+        register: register
     });
 
     function init(e) {
         kendo.bind(e.view.element, viewModel);
+    }
+
+    function beforeShow(e) {
+        if (viewModel.get("isAuthenticated")) {
+            e.preventDefault();
+            kendoApp.navigate("views/account-view.html#account-view");
+        }
     }
 
     function login() {
@@ -29,6 +35,7 @@
                 kendoApp.hideLoading();
                 sessionStorage["accessToken"] = data.access_token;
                 viewModel.set("isAuthenticated", true);
+                kendoApp.navigate("views/account-view.html#account-view");
             }, function () {
                 kendoApp.hideLoading();
             });
@@ -39,12 +46,9 @@
         kendoApp.navigate("views/account-register-view.html#account-register-view");
     };
 
-    function goToLogs() {
-        kendoApp.navigate("views/account-view.html#account-view");
-    };
-
     a.login = {
-            init: init
+        init: init,
+        beforeShow: beforeShow
     };
 
 }(app, kendoApp.app));

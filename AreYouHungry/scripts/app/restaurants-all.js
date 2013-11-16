@@ -33,14 +33,20 @@
 
             viewModel.set("restaurants", restaurants);
 
-            var lv = e.view.element.find("[data-bind='source: rds']").data("kendoMobileListView");
-            
+            var lv = e.view.element.find("[data-bind='source: rds']").data("kendoMobileListView");            
+
+            // TODO: using transport if refresh to pull function
             var setDs = new kendo.data.DataSource({
-                data: restaurants,
+                transport: {
+                    read: {
+                            url : app.servicesBaseUrl + "restaurants/all"
+                        }
+                },
                 group: {
                     field: "letter",
                     dir: "asc"
                 },
+                pageSize:6,
                 schema: {
                     parse: function (data) {
                         for (var i = 0; i < data.length; i++) {
@@ -48,7 +54,8 @@
                             data[i].rate = data[i].rating | 0;
                         }
                         return data;
-                    }
+                    },
+                    total: function () { return 500; }
                 },
             })
 

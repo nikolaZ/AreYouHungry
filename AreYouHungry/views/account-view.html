@@ -11,10 +11,15 @@
             <span data-role="button" data-align="right">Log Off</span>
             <span data-role="backbutton" data-align="left">Back</span>
         </div>
-        <h2><span class="user-name"></span>'s Order History</h2>
+        <ul data-role="buttongroup"
+            data-index="3">
+            <li data-icon="pause">Newest</li>
+            <li data-icon="toprated">Oldest</li>
+        </ul>
+        <h2><span class="user-name" data-bind="text: username"></span>'s Order History</h2>
     </header>
 
-    <span data-role="button" data-bind="click: getMore">get more</span>
+    <div data-role="content">
 
         <ul id="logs-listview"
             data-role="listview"
@@ -22,18 +27,32 @@
             data-template="cart-logs-template"
             data-bind="source: cartLogsDs"></ul>
 
+        <span data-role="button" data-bind="click: getMore">get more</span>
+    </div>
 </div>
 
 <script id="cart-logs-template" type="text/x-kendo-template">
-    <li class="cuisine-container">
-        <div>
-            <a data-role="button">#: total#</a>
-            <ul id="test-listview"
-                data-role="listview"
-                data-template="cart-logs-item-template"
-                data-bind="source: meals"></ul>
+    <div class="km-group-title">
+        <div class="km-text">
+            <span class="order-icon"></span>
+            <span>#: app.utils.formatMoney(total)# on </span>
+            <span>#: app.utils.formatDate(logDateTime)#</span>
         </div>
-    </li>
+    </div>
+        <div>
+            <ul class="km-list">
+                # for (var i = 0; i < meals.length; i++) { #
+                <li><div>#: meals[i].name#</div></li>
+                <li><div>#: meals[i].quantity# at #: app.utils.formatMoney(meals[i].price)#
+                     each = #: app.utils.formatMoney(meals[i].subtotal)#</div></li>
+                # } #
+                </ul>
+                <!--<ul id="test-listview"
+            data-role="listview"
+            data-template="cart-logs-item-template"
+            data-bind="source: meals"></ul>-->
+</div>
+
 </script>
 
 <script id="cart-logs-item-template" type="text/x-kendo-template">
@@ -49,26 +68,4 @@
 
 <script id="itemGroupHeader" type="text/x-kendo-template">
     #=kendo.toString(value, 'dddd MMMM d HH:mm')#
-</script>
-
-<script>
-    //var viewModel = kendo.observable({
-    //    cartLogs: [],
-    //    cartLogsDs: [],
-    //    getMore: function () {
-    //    }
-    //});
-
-    //httpRequest.getJSON(app.servicesBaseUrl + "cartLogs", { Authorization: "Bearer " + sessionStorage["accessToken"] })
-    //    .then(function (cartLogs) {
-    //        viewModel.set("cartLogs", cartLogs);
-
-    //        var dataSource = new kendo.data.DataSource({
-    //            data: cartLogs,
-    //            group: "logDateTime"
-    //        });
-
-    //        viewModel.set("cartLogsDs", dataSource);
-
-    //    });
 </script>

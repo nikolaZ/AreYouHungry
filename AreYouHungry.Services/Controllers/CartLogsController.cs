@@ -92,7 +92,7 @@ namespace AreYouHungry.Services.Controllers
                         Price = meal.Price,
                         RestaurantName = meal.RestaurantName
                     }).ToList()
-                });
+                }).OrderByDescending(log=> log.LogDateTime);
 
                   HttpResponseMessage response = this.Request.CreateResponse(
                         HttpStatusCode.OK, models);

@@ -3,17 +3,19 @@
      data-role="view"
      data-layout="main-layout"
      data-title="Cart"
-     data-show="app.cart.init">
+     data-init="app.cart.init">
 
     <header data-role="header">
         <div data-role="navbar">
             <a data-role="backbutton" data-align="left">Back</a>
             <span data-role="view-title"></span>          
         </div>
-        <h3><a data-role="button" data-bind="click: checkout">Checkout</a></h3>
+        <div>
+            <h2 data-bind="text: total, invisible: isCartEmpty"></h2>
+            <h2 data-bind="text: noItemsPrice, visible: isCartEmpty"></h2>
+        <a data-role="button" data-bind="click: checkout" style="display: block">Checkout</a>
+        </div>
     </header>
-
-    <h2 data-bind="text: total">#:kendo.toString(total, "c")#</h2>
 
     <ul id="menu-listview"
         data-role="listview"

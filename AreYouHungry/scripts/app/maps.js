@@ -78,6 +78,26 @@
 
         });
 
+        var lastCenter = null;
+        google.maps.event.addListener(map, "center_changed", function () {
+            var center = map.getCenter();
+
+            if (center != lastCenter) {
+                lastCenter = center;
+                console.log("changed");
+            }
+
+            var to = window.setTimeout(function () {
+
+                var u = map.getCenter();
+                if (lastCenter == u) {
+                    //alert();
+                    console.log("fsscss");
+                    lastCenter = null;
+                    window.clearTimeout(to);
+                }
+            }, 5000);
+        });
     }
 
     function attachMessage(marker) {
@@ -89,7 +109,7 @@
             console.log(infowindow);
             infowindow.open(marker.marker.map, marker.marker);
             marker.marker.map.panTo(marker.marker.getPosition());
-            marker.marker.map.setZoom(16);
+            marker.marker.map.setZoom(14);
         });
     };
 
@@ -97,6 +117,7 @@
         debugger
         for (var i = 0; i < data.length; i++) {
             var marker = new Marker(data[i].latitude, data[i].longitude, data[i].name, data[i].name, map);
+            marker.marker.setIcon("styles/images/restaurant-red.png");
             attachMessage(marker);
         }
     };

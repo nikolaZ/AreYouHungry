@@ -92,6 +92,7 @@
     <Content Include="scripts\app\menu-items.js" />
     <Content Include="scripts\app\restaurants-all.js" />
     <Content Include="scripts\app\restaurants.js" />
+    <Content Include="scripts\app\utils.js" />
     <Content Include="scripts\libs\kendo\js\jquery.min.js">
       <SubType>Content</SubType>
     </Content>
@@ -248,6 +249,7 @@
     <Content Include="styles\app.css">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="styles\images\cart-small.png" />
     <Content Include="styles\images\icenium.png">
       <SubType>Content</SubType>
     </Content>
@@ -272,6 +274,7 @@
     <Content Include="styles\images\logo2x.png">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="styles\images\restaurant-red.png" />
     <Content Include="styles\images\search.png">
       <SubType>Content</SubType>
     </Content>

@@ -4,8 +4,10 @@
 
     var viewModel = kendo.observable({
         items: [],
-        total: 0,
+        isCartEmpty: true,
+        total: 0.01,
         totalRaw: 0,
+        noItemsPrice: {},
         deleteItem: deleteFromCart,
         checkout: checkout
     });
@@ -13,6 +15,7 @@
     var cartItems = new kendo.data.DataSource({
         data: [],
         change: function () {
+            viewModel.set("isCartEmpty", false);
             var totalPrice = 0;
             var items = cartItems.data();
             for (var i = 0; i < items.length; i++) {
@@ -185,6 +188,10 @@
 
     function init(e) {
         kendo.bind(e.view.element, viewModel);
+        var noItemsPrice = 0;
+        var parsedResult = parseFloat(noItemsPrice);
+        var ret = kendo.toString(parsedResult, "c");
+        viewModel.set("noItemsPrice", ret);
     }
 
     a.cart = {

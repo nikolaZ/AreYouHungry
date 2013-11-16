@@ -61,6 +61,8 @@
             map.panTo(_lastMarker.getPosition());
             map.setZoom(20);
         });
+        
+
     }
 
     a.restaurantMaps = {

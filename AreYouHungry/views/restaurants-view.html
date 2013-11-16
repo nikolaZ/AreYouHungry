@@ -3,7 +3,7 @@
      data-role="view"
      data-layout="main-layout"
      data-title="Restaurants"
-     data-show="app.restaurantsAll.init">
+     data-init="app.restaurantsAll.init">
 
     <header data-role="header">
         <div data-role="navbar">
@@ -24,7 +24,7 @@
         data-bind="source: rds"></ul>-->
     <!--<ul id="filterable-listview"></ul>-->
 
-    <ul id="itemsList" data-role="listview" data-filterable="{field: 'name', operator: 'contains', placeholder: ' type to search...' }" data-fixed-headers="true" data-header-template="itemGroupHeader" data-template="restaurants-template1" data-style="inset" data-bind="source: rds"></ul>
+    <ul id="itemsList" data-pull-to-refresh="true" data-role="listview" data-filterable="{field: 'name', operator: 'contains', placeholder: ' type to search...' }" data-fixed-headers="true" data-header-template="itemGroupHeader" data-template="restaurants-template1" data-style="inset" data-bind="source: rds"></ul>
 
 </div>
 

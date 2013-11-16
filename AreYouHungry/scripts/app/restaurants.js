@@ -11,8 +11,6 @@
         goToMap: goToMap,
         addToCart: onAddToCart,
         purchasedQuantity: purchasedQuantity,
-        ds: [],
-        dds: {},
     });
 
     function purchasedQuantity(item) {
@@ -67,58 +65,72 @@
 
     var photos = [];
     function photosInit(e) {
-        debugger
         kendo.bind(e.view.element, viewModel);
         var id = parseInt(e.view.params.id);
         httpRequest.getJSON(app.servicesBaseUrl + "restaurants/" + id + "/photos")
         .then(function (currentPhotos) {
             viewModel.set("currentPhotos", currentPhotos);
 
-            photos = currentPhotos;
+            var c = e.view.element.find("#container");
 
-            var ds = new kendo.data.DataSource({
-                type: "json",
-                transport: {
-                    read: {
-                        url: "http://localhost:2715/api/restaurants/1/photos"
-                        //url: "http://demos.kendoui.com/service/Northwind.svc/Products"
-                    }
-                },
-                serverPaging: false,
-                pageSize: 22,
-                schema: {
-                    model: {
-                        url: "url"
-                    }
-                }
-            });
+            var orientation = "";
+            switch (window.orientation) {
+                case -90:
+                    orientation = "horizontal";
+                    break;
+                case 90:
+                    orientation = "horizontal";
+                    break;
+                default:
+                    orientation = "vertical";
+                    break;
+            }
 
-            viewModel.set("ds", ds);
-            debugger
-            var dds = new kendo.data.DataSource({
-                data: currentPhotos
-            });
-            dds.read();
-
-            var t = e.view.element.find("#scrollview-template").html();
+            var t = e.view.element.find("#gallery-" + orientation + "-template").html();
             var template = kendo.template(t);
             var result = "";
             for (var i = 0; i < currentPhotos.length; i++) {
                 result += template(currentPhotos[i]);
             }
-            debugger
-            var c = e.view.element.find("#scrollview")
-                c = c.data("kendoMobileScrollView");
-                console.log(c);
-                c.content(result);
-            debugger
+
+            c.append(result);
         });
-        
 
-        var c = e.view.element.find("#scrollview");
-        
+        window.addEventListener('orientationchange', doOnOrientationChange);
 
-        kendo.bind($(c), viewModel);
+        function slideShow() {
+            setInterval(function () {
+                slideBy1(c, 1, viewModel.get("currentPhotos").length);
+            }, 4000);
+        }
+    }
+
+    function doOnOrientationChange() {
+        switch (window.orientation) {
+            case -90:
+                debugger
+                var images = $(document).find(".slide-image");
+                images.removeClass("vertical");
+                images.addClass("horizontal");
+                break;
+            case 90:
+                var images = $(document).find(".slide-image");
+                images.removeClass("vertical");
+                images.addClass("horizontal");
+                break;
+            default:
+                var images = $(document).find(".slide-image");
+                images.removeClass("horizontal");
+                images.addClass("vertical");
+                break;
+        }
+    }
+
+    var current = 0;
+
+    function slideBy1(container, delta, imgsCount) {
+        current = (current + delta + imgsCount) % imgsCount;
+        container.css("left", (-(current * 100) + '%'));
     }
 
     a.restaurant = {
@@ -132,4 +144,24 @@
     a.restaurant.photos = {
         init: photosInit
     };
+
+    a.gallery = {
+        swipe: function (e) {
+            var cc = $(document).find("#container");
+            var imgCount = viewModel.get("currentPhotos").length;
+
+            if (e.direction == "right") {
+                slideBy1(cc, 1, imgCount)
+            }
+            else {
+                slideBy1(cc, -1, imgCount)
+            }
+        },
+        hold: function () {
+
+
+
+        }
+    };
+
 }(app, kendoApp.app));

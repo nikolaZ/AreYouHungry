@@ -1,30 +1,8 @@
-﻿<!--<script>
-    window.dss = new kendo.data.DataSource({
-        type: "json",
-        transport: {
-            read: {
-                url: "http://localhost:2715/api/restaurants/1/photos"
-                //url: "http://demos.kendoui.com/service/Northwind.svc/Products"
-            }
-        },
-        serverPaging: false,
-        pageSize: 22,
-        schema: {
-            model: {
-                url: "url"
-            }
-        }
-    });
-
-    dss.read();
-</script>-->
-
-
-<div id="restaurant-photos-view"
+﻿<div id="restaurant-photos-view"
      data-role="view"
      data-title="Gallery"
      data-layout="main-layout"
-     data-show="app.restaurant.photos.init">
+     data-init="app.restaurant.photos.init">
 
     <header data-role="header">
         <div data-role="navbar">
@@ -33,87 +11,37 @@
         </div>
     </header>
 
-    <div id="scrollview"  data-template="scrollview-template" data-role="scrollview">
-        <div data-role="page">Foo</div>
-        <div data-role="page">Bar</div>
+    <div id="wrapper"
+         data-role="touch"
+         data-enable-swipe="1"
+         data-swipe="app.gallery.swipe"
+         data-hold="app.gallery.hold">
+
+        <div id="slider">
+            <div id="container">
+            </div>
+        </div>
     </div>
 
-    <script id="scrollview-template" type="text/x-kendo-template">
-        <div data-role="page">            
-                <img style="width: 10%; height: 120px;" src="#: url#" />
+    <script id="gallery-vertical-template" type="text/x-kendo-template">
+        <div class="slides">
+            <img class="slide-image vertical" src="#: url #" />
+        </div>
+    </script>
+
+    <script id="gallery-horizontal-template" type="text/x-kendo-template">
+        <div class="slides">
+            <img class="slide-image horizontal" src="#: url #" />
         </div>
     </script>
 </div>
 
-<!--<script id="scrollview-template" type="text/x-kendo-template"><div data-role="page">
-            <div>
-                <img style="width: 80%; height: 120px;" />
-                sssss
-            </div>
-</div></script>-->
-
 <script>
-
-    //function initScrollView(e) {
-  
-    //    e.view.element.find("#scrollview").kendoMobileScrollView();
-    //}
-
-    //var viewModel = kendo.observable({
-    //    dataSource: new kendo.data.DataSource({
-    //        type: "json",
-    //        transport: {
-    //            read: {
-    //                url: "http://localhost:2715/api/restaurants/1/photos"
-    //                //url: "http://demos.kendoui.com/service/Northwind.svc/Products"
-    //            }
-    //        },
-    //        serverPaging: true,
-    //        pageSize: 2,
-    //    schema: {
-    //    data: []
-    //    },
-    //change: function() {
-    //    this.set("data", this.view());
-    //}
-    //}),
-    //data: [] //use source binding to this field
-    //});
-
-    //function test() {
-    //    kendo.bind($("#scrollview"), viewModel);
-    //}
-
-
-    //function init() {
-
-    //    $("#scrollview").kendoMobileScrollView({
-    //        dataSource: {
-    //            type: "json",
-    //            transport: {
-    //                read: {
-    //                    url: "http://localhost:2715/api/restaurants/1/photos"
-    //                    //url: "http://demos.kendoui.com/service/Northwind.svc/Products"
-    //                }
-    //            },
-    //            serverPaging: false,
-    //            pageSize: 33,
-    //            change: function () {
-    //                console.log("qweeqwewq");
-    //                this.transport.read();
-    //            },
-    //            schema: {
-    //            }
-    //        },
-    //        itemsPerPage: 1,
-    //        template: $("#scrollview-template").html(),
-    //    });
-    //}
-
-    //function setBackground(id) {
-    //    return id;
-    //    return "url(" + id + ")";
-    //    return "url(http://demos.kendoui.com/content/web/foods/" + id + ".jpg)";
-    //}
+    window.myTouch = {
+        touchstart: function (e) { console.log("touch start"); },
+        swipe: function (e) { console.log("swipe " + e.direction); },
+        tap: function (e) { console.log("tap"); },
+        doubletap: function (e) { console.log("double tap"); },
+        hold: function (e) { console.log("hold"); }
+    }
 </script>
-
