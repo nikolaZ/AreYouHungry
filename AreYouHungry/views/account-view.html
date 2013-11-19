@@ -11,23 +11,22 @@
             <span data-role="button" data-align="right">Log Off</span>
             <span data-role="backbutton" data-align="left">Back</span>
         </div>
-        <ul data-role="buttongroup"
-            data-index="3">
-            <li data-icon="pause">Newest</li>
-            <li data-icon="toprated">Oldest</li>
-        </ul>
-        <h2><span class="user-name" data-bind="text: username"></span>'s Order History</h2>
+        
+        <h2><span class="user-name"></span>Orders History</h2>
     </header>
-
+    <ul data-role="buttongroup"
+        data-index="0">
+        <li data-icon="pause" data-bind="click: getNewest">Newest</li>
+        <li data-icon="toprated" data-bind="click: getOldest">Oldest</li>
+    </ul>
     <div data-role="content">
 
         <ul id="logs-listview"
             data-role="listview"
-            data-header-template="header-template"
             data-template="cart-logs-template"
             data-bind="source: cartLogsDs"></ul>
 
-        <span data-role="button" data-bind="click: getMore">get more</span>
+        <span data-role="button" data-bind="click: getMore, visible: hasPages">get more</span>
     </div>
 </div>
 
@@ -47,10 +46,6 @@
                      each = #: app.utils.formatMoney(meals[i].subtotal)#</div></li>
                 # } #
                 </ul>
-                <!--<ul id="test-listview"
-            data-role="listview"
-            data-template="cart-logs-item-template"
-            data-bind="source: meals"></ul>-->
 </div>
 
 </script>
@@ -60,12 +55,4 @@
         <a data-role="button">#: name#</a>
         <a data-role="button">#: subtotal#</a>
     </li>
-</script>
-
-<script type="text/x-kendo-template" id="header-template">
-    my group - #: value #
-</script>
-
-<script id="itemGroupHeader" type="text/x-kendo-template">
-    #=kendo.toString(value, 'dddd MMMM d HH:mm')#
 </script>

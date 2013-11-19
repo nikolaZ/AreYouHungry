@@ -76,7 +76,7 @@
     </Content>
     <Content Include="scripts\app\account-register.js" />
     <Content Include="scripts\app\account-login.js" />
-    <Content Include="scripts\app\account.js" />
+    <Content Include="scripts\app\account-logs.js" />
     <Content Include="scripts\app\cart.js" />
     <Content Include="scripts\app\cuisines.js">
       <SubType>Content</SubType>
@@ -90,8 +90,11 @@
     <Content Include="scripts\app\maps.js" />
     <Content Include="scripts\app\restaurant-map.js" />
     <Content Include="scripts\app\menu-items.js" />
+    <Content Include="scripts\app\restaurant-review.js" />
     <Content Include="scripts\app\restaurants-all.js" />
     <Content Include="scripts\app\restaurants.js" />
+    <Content Include="scripts\app\review-details.js" />
+    <Content Include="scripts\app\reviews.js" />
     <Content Include="scripts\app\utils.js" />
     <Content Include="scripts\libs\kendo\js\jquery.min.js">
       <SubType>Content</SubType>
@@ -293,6 +296,7 @@
     <Content Include="styles\images\sprite-weather2x.png">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="styles\images\stars.png" />
     <Content Include="styles\main.css">
       <SubType>Content</SubType>
     </Content>
@@ -308,9 +312,12 @@
     <Content Include="views\maps-view.html" />
     <Content Include="views\menu-item-view.html" />
     <Content Include="views\menu-view.html" />
+    <Content Include="views\restaurant-reviews-view.html" />
     <Content Include="views\restaurant-view.html" />
     <Content Include="views\restaurant-photos-view.html" />
     <Content Include="views\restaurants-view.html" />
+    <Content Include="views\review-details-view.html" />
+    <Content Include="views\review-write-view.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Resources\" />

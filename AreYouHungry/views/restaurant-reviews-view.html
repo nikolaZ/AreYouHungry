@@ -1,0 +1,47 @@
+﻿<div id="restaurant-reviews"
+     data-id="restaurant-reviews"
+     data-role="view"
+     data-layout="main-layout"
+     data-show="app.restaurant.reviews.init">
+
+    <header data-role="header">
+        <div data-role="navbar">
+            <a data-role="backbutton" data-align="left">Back</a>
+            <span data-role="view-title"
+                  data-bind="text: name"></span>
+            <span>&nbsp;Reviews</span>
+        </div>
+    </header>
+
+
+    <div data-role="content">
+        <ul id="reviews-listview"
+            data-role="listview"
+            data-template="reviews-template"
+            data-style="inset"
+            data-bind="source: reviews"></ul>
+
+        <span data-role="button" data-bind="click: getMore">Get More Reviews</span>
+    </div>
+</div>
+
+<script id="reviews-template" type="text/x-kendo-template">
+
+
+    <a class="details-link"
+       data-role="listview-link"
+       href="views/review-details-view.html\\#review-details?id=${id}">
+        <div class="km-group-title">
+            <div class="km-text">
+                <span>#: app.utils.formatDate(dateTime)#</span>
+            </div>
+        </div>
+
+        <div>
+            <span>#: username#</span>
+            <span>#: rating#</span>
+            <span>#: hasPhoto#</span>
+        </div>
+    </a>
+
+</script>

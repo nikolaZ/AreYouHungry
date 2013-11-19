@@ -1,5 +1,6 @@
 ﻿var app = app || {};
 
+// TODO: refactor viewmodel
 (function (a, kendoApp) {
     var viewModel = kendo.observable({
         currentRestaurant: {},
@@ -8,6 +9,7 @@
         goToMenu: goToMenu,
         goToPhotos: goToPhotos,
         goToReviewWriting: goToReviewWriting,
+        goToReviews: goToReviews,
         goToMap: goToMap,
         addToCart: onAddToCart,
         purchasedQuantity: purchasedQuantity,
@@ -37,7 +39,11 @@
     };
 
     function goToReviewWriting() {
-        kendoApp.navigate("views/restaurant-photos-view.html#restaurant-photos-view?id=" + this.currentRestaurant.id);
+        kendoApp.navigate("views/review-write-view.html#restaurant-review-view?id=" + this.currentRestaurant.id + "&name=" + this.currentRestaurant.name);
+    }
+
+    function goToReviews() {
+        kendoApp.navigate("views/restaurant-reviews-view.html#restaurant-reviews?id=" + this.currentRestaurant.id + "&name=" + this.currentRestaurant.name);
     }
 
     function goToMap() {
@@ -63,7 +69,7 @@
         });
     }
 
-    var photos = [];
+
     function photosInit(e) {
         kendo.bind(e.view.element, viewModel);
         var id = parseInt(e.view.params.id);
@@ -159,7 +165,7 @@
         },
         hold: function () {
 
-
+            // TODO: zoom view
 
         }
     };

@@ -1,12 +1,9 @@
 ﻿using AreYouHungry.Data;
 using AreYouHungry.Services.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web;
-using System.Web.Mvc;
 
 namespace AreYouHungry.Services.Controllers
 {
@@ -34,6 +31,11 @@ namespace AreYouHungry.Services.Controllers
             var result = this.PerformOperationAndHandleExceptions(
               () =>
               {
+                  //var ct = db.GetContext();
+                  //var u = from r in ct.Set<Restaurant>().ToList()
+                  //        let distance = CalculateDistance(lat, r.Latitude, lng, r.Longitude)
+                  //        select new { distance = distance };
+
                   var models = db.Restaurants.All()
                       .Select(RestaurantMapModel.FromRestaurant).ToList()
                       .Where(r => CalculateDistance(lat, r.Latitude, lng, r.Longitude) < 3)

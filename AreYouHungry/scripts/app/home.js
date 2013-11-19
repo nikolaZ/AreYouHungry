@@ -37,4 +37,8 @@ var app = app || {};
             init: init
         };
 
+        a.closeErrorModal = function () {
+            $("#error-view").show().data().kendoMobileModalView.close();
+        }
+
 }(app, kendoApp.app));

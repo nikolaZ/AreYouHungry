@@ -1,4 +1,4 @@
-﻿using Antlr.Runtime.Misc;
+﻿using System;
 using AreYouHungry.Models;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -19,7 +19,7 @@ namespace AreYouHungry.Services.Models
         [DataMember(Name = "logDateTime")]
         public System.DateTime LogDateTime { get; set; }
 
-        public static Expression<Func<CartLog, CartLogModel>> FromCartLog
+        public static Func<CartLog, CartLogModel> FromCartLog
         {
             get
             {

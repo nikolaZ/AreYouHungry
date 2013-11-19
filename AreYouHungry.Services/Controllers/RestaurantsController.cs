@@ -29,7 +29,8 @@ namespace AreYouHungry.Services.Controllers
             var result = this.PerformOperationAndHandleExceptions(
               () =>
               {
-                  var models = db.Restaurants.All().OrderByDescending(r=> r.Rating).Take(5).Select(RestaurantShortModel.FromRestaurant);
+                  var models = db.Restaurants.All()
+                      .OrderByDescending(r=> r.Rating).Take(5).Select(RestaurantShortModel.FromRestaurant);
                   
                   HttpResponseMessage response = this.Request.CreateResponse(
                         HttpStatusCode.OK,

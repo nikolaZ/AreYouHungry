@@ -1,3 +1,15 @@
+span.stars, span.stars span {
+    display: block;
+    background: url(http://demo.mobiscroll.com/privateContent/rating_default.png) 0 -24px repeat-x;
+    width: 120px;
+    height: 24px;
+}
+
+span.stars span {
+    background-position: 0 0;
+}
+
+
 /* Gallery */
 #wrapper {
     margin: auto;
@@ -37,7 +49,12 @@
         vertical-align: middle;
         display: block;
         margin: auto;
+        /*padding-left:20%;*/
     }
+
+    /*.slides:first-of-type img {
+        padding-left:0;
+    }*/
 
     .slides img.vertical {
         width: 100%;

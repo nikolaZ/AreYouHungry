@@ -71,28 +71,33 @@ namespace AreYouHungry.Services.Controllers
         }
 
         [Authorize]
-        public HttpResponseMessage GetCartLogs()
+        public HttpResponseMessage GetCartLogs(int pageSize, int page, string direction)
         {
             var result = this.PerformOperationAndHandleExceptions(
               () =>
               {
                   var username = User.Identity.Name;
 
-                  var models = db.CartLogs.All()
+                  IEnumerable<CartLogModel> models;
+
+                  if (direction == "asc")
+                  {
+                      models = db.CartLogs.All()
                       .Where(log => log.User.UserName == username)
-                      .Select(cartLog => new CartLogModel
-                {
-                    Total = cartLog.Total,
-                    LogDateTime = cartLog.LogDateTime,
-                    Meals = cartLog.Meals.Select(meal => new CartLogMealModel()
-                    {
-                        Name = meal.Name,
-                        Subtotal = meal.Subtotal,
-                        Quantity = meal.Quantity,
-                        Price = meal.Price,
-                        RestaurantName = meal.RestaurantName
-                    }).ToList()
-                }).OrderByDescending(log=> log.LogDateTime);
+                      .OrderBy(log => log.LogDateTime)
+                          .Skip((page - 1) * pageSize)
+                         .Take(pageSize)
+                      .Select(CartLogModel.FromCartLog);
+                  }
+                  else
+                  {
+                      models = db.CartLogs.All()
+                      .Where(log => log.User.UserName == username)
+                      .OrderByDescending(log => log.LogDateTime)
+                          .Skip((page - 1) * pageSize)
+                         .Take(pageSize)
+                      .Select(CartLogModel.FromCartLog);
+                  }
 
                   HttpResponseMessage response = this.Request.CreateResponse(
                         HttpStatusCode.OK, models);

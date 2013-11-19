@@ -1,0 +1,21 @@
+﻿<div id="review-details"
+     data-role="view"
+     data-layout="main-layout"
+     data-title="Review"
+     data-show="app.reviews.details.init">
+
+    <header data-role="header">
+        <div data-role="navbar">
+            <a data-role="backbutton" data-align="left">Back</a>
+            <span data-role="view-title"></span>
+        </div>
+    </header>
+
+    <div data-role="content">
+        <img data-bind="source: review,  attr: { src: photoUrl }" class="menu-item-photo">
+        <h2 data-bind="source: review, text: review.username"></h2>
+        <h2 data-bind="source: review, text: review.rating"></h2>
+        <p data-bind="source: review, text: review.description"></p>
+        <span class="added"></span>
+    </div>
+</div>

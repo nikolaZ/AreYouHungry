@@ -1,0 +1,105 @@
+﻿<div id="restaurant-review-view"
+     data-role="view"
+     data-layout="main-layout"
+     data-init="test"
+     data-show="app.restaurant.review.init">
+
+    <header data-role="header">
+        <div data-role="navbar">
+            <a data-role="backbutton" data-align="left">Cancel</a>
+            <span data-role="view-title"
+                  data-bind="text: name"></span>
+        </div>
+    </header>
+
+    <div id="review">
+        <label>
+            Description
+            <textarea data-bind="value: text" placeholder="Write your impressions here..." required="required" name="textarea" validationmessage="Please enter {0}"></textarea>
+        </label>
+        </div>
+
+        <a data-role="button" data-bind="click: takePicture">Take Picture</a>
+    <a data-role="button" data-bind="click: loadPicture">Load Picture</a>
+
+    <img id="review-image" width="200" alt="review image" data-bind="visible: havePicture, attr:{src: pictureSrc}" />
+        <a data-role="button" data-bind="click: cancel, visible: havePicture">Cancel</a>
+
+    <div>
+        <select id="rating" data-role="dropdownlist" data-template="ala"
+                data-bind="events: {change: onChange}"
+                data-auto-bind="false" data-option-label="Rate it" data-value="Rate it">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+    </div>
+    <div>
+
+        <span class="status">status here</span>
+
+            <button data-bind="click: submit">Submit</button>
+</div>
+
+</div>
+
+<script id="ala" type="text/x-kendo-template">
+    #if(parseInt(value)){#
+    <span class="stars"><span style="width: #: value * 24 #px"></span></span>
+    #}else{#
+    Rate It
+    #}#
+    <!--<span class="stars"><span style="width: #: value * 24 #px"></span></span>-->
+</script>
+
+<script>
+    $.fn.stars = function () {
+        return $(this).each(function () {
+            // Get the value
+            var val = parseFloat($(this).html());
+            // Make sure that the value is in 0 - 5 range, multiply to get width
+            var size = Math.max(0, (Math.min(5, val))) * 16;
+            // Create stars holder
+            var $span = $('<span />').width(size);
+            // Replace the numerical value with stars
+            $(this).html($span);
+        });
+    }
+
+    function test() {
+
+
+        var validator = $("#review").kendoValidator(
+            {
+                rules: {
+                    custom: function (textarea) {
+                        if (textarea.is("[name=textarea]")) {
+                            var length = textarea.val().length;
+
+                            textarea.attr("validationmessage", "set error here");
+                            return  length > 3 && length < 351;
+                        }
+                        return true;
+                    }
+                }
+            }).data("kendoValidator"),
+                        status = $(".status");
+
+        $("#f").click(function () {
+            if (validator.validate()) {
+                debugger
+                status.text("Hooray! Your tickets has been booked!")
+                    .removeClass("invalid")
+                    .addClass("valid");
+            } else {
+                debugger
+                status.text("Oops! There is invalid data in the form.")
+                    .removeClass("valid")
+                    .addClass("invalid");
+            }
+        });
+    }
+
+</script>

@@ -189,6 +189,7 @@
     <Compile Include="Controllers\MapsController.cs" />
     <Compile Include="Controllers\MealsController.cs" />
     <Compile Include="Controllers\RestaurantsController.cs" />
+    <Compile Include="Controllers\ReviewsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -203,6 +204,9 @@
     <Compile Include="Models\PhotoModel.cs" />
     <Compile Include="Models\RestaurantMapModel.cs" />
     <Compile Include="Models\RestaurantShortModel.cs" />
+    <Compile Include="Models\ReviewDetailsModel.cs" />
+    <Compile Include="Models\ReviewPostModel.cs" />
+    <Compile Include="Models\ReviewShortModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -258,6 +262,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\ReviewsPhotos\" />
     <Folder Include="Views\Maps\" />
   </ItemGroup>
   <ItemGroup>

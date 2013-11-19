@@ -9,8 +9,12 @@ namespace AreYouHungry.Models
         public int Id { get; set; }
 
         [Required]
-        public ApplicationUser User { get; set; }
+        public virtual ApplicationUser User { get; set; }
 
+        [Required]
+        public virtual Restaurant Restaurant { get; set; }
+
+        [Required]
         public double Rating { get; set; }
 
         [Required]
@@ -26,11 +30,10 @@ namespace AreYouHungry.Models
         [Required]
         public DateTime Date { get; set; }
 
-        public virtual ICollection<Photo> Photos { get; set; }
+        public string Photo { get; set; }
 
         public Review()
         {
-            this.Photos = new HashSet<Photo>();
         }
     }
 }

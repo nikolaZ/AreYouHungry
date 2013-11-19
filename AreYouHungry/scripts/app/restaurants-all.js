@@ -19,6 +19,22 @@
             //};
 
             lv.dataSource.fetch();
+        },
+        sortByName: function (e) {
+            var lv = $(e.view.document).find("[data-bind='source: rds']").data("kendoMobileListView");
+            debugger
+            if (lv.dataSource._group[0].field == "letter" && lv.dataSource._group[0].dir == "asc") {
+                lv.dataSource._group[0].dir = "desc";
+                lv.dataSource.fetch();
+                return;
+            }
+
+            lv.dataSource._group = {
+                field: "letter",
+                dir: "asc"
+            };
+
+            lv.dataSource.fetch();
         }
     });
 
