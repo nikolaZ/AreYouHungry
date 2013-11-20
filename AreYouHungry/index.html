@@ -41,6 +41,7 @@
     <body>
         <!--Home-->
         <div id="home"
+             data-id="home"
              data-role="view"
              data-title="Home"
              data-layout="main-layout"
@@ -49,19 +50,22 @@
             <ul id="custom-listview"
                 data-role="listview"
                 data-template="restaurants-template"
-                data-bind="source: topRestaurants"></ul>
+                data-bind="source: topRestaurants">
+            </ul>
         </div>
         
         <script type="text/x-kendo-template" id="restaurants-template" >
-            <li class="cuisine-container">
                 <a class="details-link"
                    data-role="listview-link"
-                   href="views/restaurant-view.html\\#details?id=${id}">
-                    <img class="item-photo" src="${logo}" />
-                    <h3 class="item-title">${name}</h3>
-                    <p class="item-info">${address}</p>
+                   href="views/restaurant-view.html\\#details?id=#: id#">
+                    <img class="item-photo" src="#: logo#" />
+                    <h3 class="item-title">#: name#</h3>
+                    <!--<p class="item-info">#: address#</p>-->
+                    <div class="star">
+                        <span class="rating">#:rating#</span>
+                        <div class="rate" style="height: #: (5 - rating) * 12#px"></div>
+                    </div>
                 </a>
-            </li>
         </script>
 
         <!--Error Modal View-->
@@ -91,7 +95,7 @@
                 <div data-role="tabstrip">
                     <a href="#home" data-icon="home">Home</a>     
                     <a href="views/restaurants-view.html#restaurants-view" data-icon="home">Restaurants</a>
-                    <a href="views/cuisines-view.html#cuisines-view" data-icon="contacts">Cuisines</a>
+                    <!--<a href="views/cuisines-view.html#cuisines-view" data-icon="contacts">Cuisines</a>-->
                     <a href="views/cart-view.html#cart-view" data-icon="cart">Cart</a>
                     <a href="views/account-login-view.html#account-login-view" data-icon="contacts">Account</a>
                     <a href="views/maps-view.html#maps-view" data-icon="globe">Location</a>

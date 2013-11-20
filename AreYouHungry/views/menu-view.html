@@ -1,12 +1,12 @@
 ﻿<div id="menu-view"
      data-role="view"
      data-layout="main-layout"
-     data-show="app.restaurant.menu.init">
+     data-init="app.restaurant.menu.init">
 
     <header data-role="header">
         <div data-role="navbar">
             <a data-role="backbutton" data-align="left">Back</a>
-            <span data-role="view-title" 
+            <span data-role="view-title"
                   data-template="view-title"
                   data-bind="source: currentRestaurant"></span>
         </div>
@@ -14,6 +14,7 @@
 
     <ul id="menu-listview"
         data-role="listview"
+        class="item-list"
         data-template="menu-template"
         data-bind="source: currentMenu"></ul>
 </div>
@@ -23,17 +24,17 @@
 </script>
 
 <script id="menu-template" type="text/x-kendo-template">
-    <li class="cuisine-container">
-        <a data-role="button"
-           data-item-id="#:id#" data-bind="source:this, click: addToCart">#:kendo.toString(price, "c")#</a>
-
-        <span data-bind="text: purchasedQuantity"></span>
-
-        <a class="details-link"
-           data-role="listview-link"
-           href="views/menu-item-view.html\\#menu-item-view?id=#:id#">
-            <img src="#:photo#" class="item-photo" style="width:50px; height:50px;" />
-            <h2 class="item-title">#:name#</h2>
-        </a>
-    </li>
+        <li class="list-item">
+            <div class="menu-item">
+                <span data-bind="text: purchasedQuantity"></span>
+                <a data-role="button"
+                   data-item-id="#:id#" data-bind="source:this, click: addToCart">#:kendo.toString(price, "c")#</a>
+            </div>
+            <a class="details-link"
+               data-role="listview-link"
+               href="views/menu-item-view.html\\#menu-item-view?id=#:id#">
+                <img src="#:photo#" class="item-photo" />
+                <h2 class="item-title">#:name#</h2>
+            </a>
+        </li>
 </script>

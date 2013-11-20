@@ -1,6 +1,7 @@
 ﻿var app = app || {};
 
 (function (a) {
+    var _view;
 
     var viewModel = kendo.observable({
         items: [],
@@ -15,9 +16,16 @@
     var cartItems = new kendo.data.DataSource({
         data: [],
         change: function () {
-            viewModel.set("isCartEmpty", false);
             var totalPrice = 0;
             var items = cartItems.data();
+
+            if (items.length > 0) {
+                viewModel.set("isCartEmpty", false);
+            }
+            else {
+                viewModel.set("isCartEmpty", true);
+            }
+
             for (var i = 0; i < items.length; i++) {
                 var cartItem = items[i];
                 totalPrice += cartItem.get("quantity") * cartItem.get("item.price");
@@ -78,11 +86,24 @@
     };
 
     function deleteFromCart(e) {
-        //var item = e.button.context.kendoBindingTarget.source.item;
         var item = e.data.item;
         var index = getIndex(item);
         var dataItem = cartItems.at(index);
         cartItems.remove(dataItem);
+
+        // TODO: refactoring
+        debugger
+        var c = _view.scrollerContent.height();
+        var cc = _view.scroller.element.height();
+        var u = _view.scroller.scrollTop;
+
+        // rescroll if neccessary
+        if (_view.scrollerContent.height() < _view.scroller.element.height()) {
+                _view.element.data("kendoMobileView").scroller.reset();
+        }
+        else if (u + cc > c) {
+            _view.element.data("kendoMobileView").scroller.scrollTo(0, -cc);
+        }
     }
 
     function checkout() {
@@ -187,6 +208,7 @@
     };
 
     function init(e) {
+        _view = e.view;
         kendo.bind(e.view.element, viewModel);
         var noItemsPrice = 0;
         var parsedResult = parseFloat(noItemsPrice);

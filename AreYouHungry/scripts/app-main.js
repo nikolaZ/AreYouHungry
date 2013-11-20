@@ -13,7 +13,8 @@
     kendoApp.app = new kendo.mobile.Application(document.body, {
         layout: "tabstrip-layout",
         transition: "slide",
-        loading: '<h1 class="loading-message">Loading...</h1>'
+        loading: '<h1 class="loading-message">Loading...</h1>',
+        skin: 'flat' 
     });
 
     global.app.servicesBaseUrl = "http://localhost:2715/api/";

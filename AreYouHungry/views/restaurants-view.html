@@ -18,13 +18,13 @@
 </ul>
     </header>
 
-    <!--<ul id="restaurants-listview"
-        data-role="listview"
-        data-template="restaurants-template1"
-        data-bind="source: rds"></ul>-->
-    <!--<ul id="filterable-listview"></ul>-->
-
-    <ul id="itemsList" data-pull-to-refresh="true" data-role="listview" data-filterable="{field: 'name', operator: 'contains', placeholder: ' type to search...' }" data-fixed-headers="true" data-header-template="itemGroupHeader" data-template="restaurants-template1" data-style="inset" data-bind="source: rds"></ul>
+    <ul id="itemsList" data-pull-to-refresh="true"
+         data-role="listview"
+         data-filterable="{field: 'name', operator: 'contains', placeholder: ' type to search...' }"
+         data-fixed-headers="true"
+         data-header-template="itemGroupHeader"
+         data-template="restaurants-template1" 
+         data-bind="source: rds"></ul>
 
 </div>
 
@@ -33,76 +33,14 @@
        data-role="listview-link"
        href="views/restaurant-view.html\\#details?id=${id}">
         <img class="menu-item-photo" src="${logo}" />
-        <h3 class="item-title">${name}</h3>
-        <p class="item-info">${address}</p>
+        <h3 class="item-title">#: name#</h3>
+        <div class="star">
+            <span class="rating">#:rating#</span>
+            <div class="rate" style="height: #: (5 - rating) * 12#px"></div>
+        </div>
     </a>
-</script>
-
-<!--<script>
-    function mobileListViewFiltering() {
-        var dataSource = new kendo.data.DataSource({
-            transport: {
-                read: {
-                    url: "http://localhost:2715/api/restaurants"
-                }
-            },
-            sort: {
-                field: "name",
-                dir: "desc"
-            },
-            serverPaging: true,
-            serverFiltering: true,
-            serverSorting: true,
-            pageSize: 500
-        });
-
-        $("#filterable-listview").kendoMobileListView({
-            dataSource: dataSource,
-            template: $("#restaurants-template1").html(),
-            filterable: {
-                field: "name",
-                operator: "startswith"
-            },
-            loadMore:true
-        });
-    }
-</script>-->
-<script id="itemTemplate" type="text/x-kendo-template">
-    <a class="km-listview-link" href="\\#page2">${name}</a>
 </script>
 
 <script id="itemGroupHeader" type="text/x-kendo-template">
     #=kendo.toString(value, 'dddd MMMM d HH:mm')#
-</script>
-<script>
-
-    var items = [
-      { id: 1, name: 'Ted', start_time: new Date('9/1/2013 08:00') },
-      { id: 2, name: 'Red', start_time: new Date('9/1/2013 08:00') },
-      { id: 3, name: 'Fred', start_time: new Date('9/2/2013 08:00') },
-      { id: 4, name: 'Ed', start_time: new Date('9/2/2013 08:00') },
-      { id: 5, name: 'Ned', start_time: new Date('9/2/2013 08:00') },
-      { id: 6, name: 'Zed', start_time: new Date('9/3/2013 08:00') },
-      { id: 6, name: 'Jerry', start_time: new Date('9/3/2013 08:00') },
-      { id: 6, name: 'Keith', start_time: new Date('9/4/2013 08:00') },
-      { id: 6, name: 'Austin', start_time: new Date('9/4/2013 08:00') },
-      { id: 6, name: 'Mohoney', start_time: new Date('9/4/2013 08:00') },
-      { id: 6, name: 'Charles', start_time: new Date('9/4/2013 08:00') },
-      { id: 6, name: 'Winchester', start_time: new Date('9/4/2013 08:00') }
-    ];
-
-    var viewModel = new kendo.observable({
-        dataSource: new kendo.data.DataSource({        
-                transport: {
-                    read: {
-                        url: "http://localhost:2715/api/restaurants"
-                    }
-                },
-                sort: {
-                    field: "name",
-                    dir: "desc"
-                },            
-            group: "name"
-        })
-    });
 </script>

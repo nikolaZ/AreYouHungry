@@ -6,15 +6,13 @@
         </div>
     </header>
 
-    <div data-role="content">
-        <aside>
-            <span class="price"></span>
-            <a data-role="button" data-bind="click: addToCart" data-icon="cart"></a>
-
-            <span data-bind="text: purchasedQuantity"></span>
-
-        </aside>
+    <div data-role="content" class="menu-item">
         <img data-bind="source: currentMenuItem, attr: { src: currentMenuItem.photo }" class="menu-item-photo">
+        <aside>
+            <span class="price" data-bind="source: currentMenuItem, text: currentMenuItem.price"></span>
+            <a data-role="button" data-bind="click: addToCart" data-icon="cart"></a>
+            <span data-bind="text: purchasedQuantity"></span>
+        </aside>
         <h2 data-bind="source: currentMenuItem, text: currentMenuItem.name"></h2>
         <p data-bind="source: currentMenuItem, text: currentMenuItem.description"></p>
         <span class="added"></span>

@@ -13,7 +13,8 @@
         <div>
             <h2 data-bind="text: total, invisible: isCartEmpty"></h2>
             <h2 data-bind="text: noItemsPrice, visible: isCartEmpty"></h2>
-        <a data-role="button" data-bind="click: checkout" style="display: block">Checkout</a>
+            <h2 data-bind="visible: isCartEmpty">No Items in cart</h2>
+        <a data-role="button" data-bind="click: checkout, invisible: isCartEmpty">Checkout</a>
         </div>
     </header>
 

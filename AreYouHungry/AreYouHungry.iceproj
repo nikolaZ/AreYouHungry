@@ -252,6 +252,7 @@
     <Content Include="styles\app.css">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="styles\images\3star_x60.png" />
     <Content Include="styles\images\cart-small.png" />
     <Content Include="styles\images\icenium.png">
       <SubType>Content</SubType>
