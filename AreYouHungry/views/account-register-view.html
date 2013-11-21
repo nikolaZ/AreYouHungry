@@ -12,12 +12,18 @@
         </div>
     </header>
 
-    <div data-role="content">
-        <input type="text" placeholder="Username" data-bind="value: username" />
-        <input type="password" placeholder="Password" data-bind="value: password" />
-        <input type="text" placeholder="Email" data-bind="value: email" />
-        <input type="password" placeholder="Phone" data-bind="value: phone" />
-        <a data-role="button" data-bind="click: login">Log In</a>
-        <a data-bind="click: register" data-role="button">Register</a>
+    <div data-role="content" id="register-form">
+        <input type="text" placeholder="Username" data-bind="value: username" class="account-input"
+               name="username" required />
+        <input id="register-password" type="password" placeholder="Password" data-bind="value: password" class="account-input"
+               name="password" required />
+        <input type="password" placeholder="ConfirmPassword" data-bind="value: confirmPassword" class="account-input"
+               name="confirmPassword" required />
+        <input type="email" placeholder="Email" data-bind="value: email" class="account-input"
+               name="email" required />
+        <input type="tel" placeholder="Phone" data-bind="value: phone" class="account-input"
+               name="telephone" required title="Phone must be 10 digits" />
+        <a data-role="button" data-bind="click: login" class="login">Log In</a>
+        <a data-bind="click: register" data-role="button" class="register">Register</a>
     </div>
 </div>

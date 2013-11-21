@@ -61,6 +61,10 @@ span.stars, span.stars span {
 }
 
 /*#region Gallery */
+.slides, #restaurant-photos-view, #restaurant-photos-view .km-content {
+        background: url(http://demos.kendoui.com/content/shared/images/patterns/pattern8.png);
+}
+
 #wrapper {
     margin: auto;
     width: 90%;
@@ -72,7 +76,6 @@ span.stars, span.stars span {
     width: 90%;
     overflow: hidden;
     margin: auto;
-    border-radius: 10px;
 }
 
 #container {
@@ -91,7 +94,6 @@ span.stars, span.stars span {
     float: left;
     width: 10%;
     height: 90%;
-    background-color: blue;
     margin: auto;
 }
 
@@ -108,6 +110,7 @@ span.stars, span.stars span {
 
     .slides img.vertical {
         width: 100%;
+        margin-top:4em;
     }
 
     .slides img.horizontal {
@@ -146,9 +149,10 @@ span.stars, span.stars span {
     vertical-align: bottom;
 }
 
+/*Map Restaurant Single*/
 #restaurant-map-canvas {
     width: 100%;
-    height: 400px;
+    height: 600px;
     display: inline-block;
     float: left;
 }
@@ -156,14 +160,19 @@ span.stars, span.stars span {
 
 /* Home List View */
 
-#home .cuisine-container {
+#custom-listview {
+    height: 100%;
+}
+
+#home .container {
     display: block;
     clear: both;
     float: none;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px ridge #cbc8c8;
+    background: url(http://demos.kendoui.com/content/shared/images/patterns/pattern8.png);
 }
 
-    #home .cuisine-container:last-of-type {
+    #home .container:last-of-type {
         border-bottom: 0 none;
     }
 
@@ -175,22 +184,31 @@ span.stars, span.stars span {
     box-shadow: 0 1px 3px #333;
     -webkit-border-radius: 8px;
     border-radius: 8px;
+    float: left;
+}
+
+#custom-listview .star {
+    right: 1em;
 }
 
 #custom-listview .item-title {
-    font-size: 1em;
+    font-size: 1.5em;
     margin: .3em 1em 0 .6em;
     width: 50%;
+    max-width: 50%;
     display: inline-block;
     position: relative;
+    float: left;
 }
 
 #custom-listview .item-info {
     display: inline-block;
-    font-size: .7em;
+    font-size: .8em;
     line-height: 1em;
     margin: 0 0 0 .95em;
     width: 45%;
+    max-width: 45%;
+    float: left;
 }
 
 #custom-listview .item-title,
@@ -202,60 +220,11 @@ span.stars, span.stars span {
     color: #974d2e;
 }
 
-/*#custom-listview {
-    margin: 0;
-}*/
-
-/*#home .details-link {
-    margin-top: -1em;
-    right: 0.6em;
-    top: 50%;
-}*/
-
-
-/*casccacsacs*/
-
-
-.k-numerictextbox .k-select .k-link span.k-i-arrow-n {
-    background-position: 0 -3px;
+#home .details-link {
+    display: block;
+    height: 115px;
 }
 
-.k-numerictextbox .k-icon {
-    height: 20px;
-}
-
-:root * > .k-icon, *:root * > .k-sprite, *:root * > .k-button-group .k-tool-icon {
-    vertical-align: middle;
-}
-
-.k-icon, .k-tool-icon, .k-grouping-dropclue, .k-drop-hint, .k-column-menu .k-sprite {
-    background-image: url("http://demos.kendoui.com/scripts/libs/kendo/styles/Default/sprite.png");
-    border-color: rgba(0, 0, 0, 0);
-}
-
-.k-icon, .k-state-disabled .k-icon, .k-column-menu .k-sprite {
-    opacity: 0.9;
-}
-
-.k-widget, .k-header, .k-content, .k-autocomplete .k-input, .k-picker-wrap .k-input, .k-dropdown-wrap .k-input, .k-picker-wrap .k-input, .k-numeric-wrap .k-input, .k-window-titlebar, .k-window-content, .k-link, .k-icon, .k-tool-icon, .k-splitbar {
-    -moz-box-sizing: content-box;
-}
-
-.k-icon, .k-sprite {
-    background-color: red;
-    border: 1px solid #000;
-}
-
-.k-icon, .k-sprite, .k-button-group .k-tool-icon {
-    background-repeat: no-repeat;
-    display: inline-block;
-    font-size: 0;
-    line-height: 0;
-    overflow: hidden;
-    text-align: center;
-    text-indent: -3333px;
-    width: 35px;
-}
 
 .k-link {
     cursor: pointer;
@@ -482,7 +451,7 @@ span.stars, span.stars span {
     display: inline-block;
     position: absolute;
     right: 1em;
-    top:25%;
+    top: 25%;
 }
 
 .item-list li.list-item {
@@ -494,22 +463,22 @@ span.stars, span.stars span {
         display: block;
         text-decoration: none;
         overflow: hidden;
-        height:5em;
+        height: 5em;
     }
 
 .item-list .item-title {
     text-align: center;
     width: 35%;
     max-width: 35%;
-    bottom:0.8em;
-    top:5%;
+    bottom: 0.8em;
+    top: 5%;
 }
 
 .item-list .item-photo {
     width: 25%;
-margin-top:0.2em;
+    margin-top: 0.2em;
     max-height: 4em;
-       border-radius: 8px;
+    border-radius: 8px;
     box-shadow: 0 2px 3px #333333;
 }
 /*#endregion*/
@@ -520,7 +489,7 @@ margin-top:0.2em;
     display: inline-block;
     position: absolute;
     right: 1em;
-    top:25%;
+    top: 25%;
 }
 
 .item-list li.list-item {
@@ -532,22 +501,123 @@ margin-top:0.2em;
         display: block;
         text-decoration: none;
         overflow: hidden;
-        height:5em;
+
     }
 
 .item-list .item-title {
+    font-size:1em;
     text-align: center;
     width: 35%;
     max-width: 35%;
-    bottom:0.8em;
-    top:5%;
+
+float:left;
+    vertical-align:middle;
 }
 
 .item-list .item-photo {
     width: 25%;
-margin-top:0.2em;
+    margin-top: 0.2em;
     max-height: 4em;
-       border-radius: 8px;
+    border-radius: 8px;
     box-shadow: 0 2px 3px #333333;
+
+    vertical-align:middle;
+float:left;
 }
 /*#endregion*/
+
+.login, .register, .account-input {
+    width: 90%;
+    text-align: center;
+    margin: 1em auto;
+    display: block;
+}
+
+.account-input {
+    border-radius: 8px;
+    box-shadow: 0 2px 3px #333333;
+    height: 3em;
+    line-height: 2.5em;
+    font: 2em;
+    text-align: center;
+}
+
+/*#region Review Writing*/
+
+.review-textarea {
+    display: block;
+    width: 80%;
+    height: 100px;
+    border-radius: 8px;
+    box-shadow: 0 2px 3px #333333;
+    margin: 0 auto;
+    margin-top: 1em;
+}
+
+#review {
+    color: #c40000;
+}
+
+    #review strong {
+        width: 80%;
+        margin: 0 auto;
+        margin-top: .4em;
+        display: block;
+        text-align: center;
+    }
+
+.btn-picture {
+    width: 80%;
+    margin: 1em auto;
+    display: block;
+}
+
+#review-image {
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 2px 3px #333333;
+    margin: 1em auto;
+}
+
+/*#endregion*/
+
+/*Restaurant Single View*/
+
+.restaurant-logo {
+    display:block;
+    margin:0 auto;
+    margin-top:1em;
+    width:90%;
+        border-radius: 8px;
+    box-shadow: 0 2px 3px #333333;
+}
+
+.restaurant-btn {
+    width:90%;
+    display:block;
+        margin:0 auto;
+    margin-top:1em;
+}
+
+/*Cart*/
+.km-view .km-content .km-button .trash,
+.km-flat .km-button .trash {
+    background-color: #990000;
+     background-image: linear-gradient(center top , rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0));
+    border-width: 0 0 1px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3) inset, 0 1px 3px rgba(0, 0, 0, 0.5)
+}
+
+.item-subtotal {
+    display:inline;
+}
+
+.review-photo {
+    width:90%;
+    max-height:45%;
+    display:block;
+            border-radius: 8px;
+    box-shadow: 0 2px 3px #333333;
+    margin:0 auto;
+    margin-top:1em;
+}

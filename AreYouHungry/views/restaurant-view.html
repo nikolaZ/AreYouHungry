@@ -8,16 +8,14 @@
     </header>
 
     <div data-role="content">
-        <aside>
-            <span class="price"></span>
-            <a data-role="button" data-bind="click: goToMenu">Menu</a>        
-        </aside>
+        <img data-bind="source: currentRestaurant, attr:{ src: currentRestaurant.logo }" alt="Restaurant Logo" class="restaurant-logo" />
         <h2 data-bind="source: currentRestaurant, text: currentRestaurant.name"></h2>
         <p data-bind="source: currentRestaurant, text: currentRestaurant.address"></p>
         <p data-bind="source: currentRestaurant, text: currentRestaurant.description"></p>
-        <a data-role="button" data-bind="click: goToPhotos">Gallery</a> 
-        <a data-role="button" data-bind="click: goToReviewWriting">Write review</a> 
-        <a data-role="button" data-bind="click: goToMap">View Location</a> 
-        <a data-role="button" data-bind="click: goToReviews">View Reviews</a> 
+        <a data-role="button" class="restaurant-btn" data-bind="click: goToMenu">Menu</a>
+        <a data-role="button" class="restaurant-btn" data-bind="click: goToPhotos">Gallery</a>
+        <a data-role="button" class="restaurant-btn" data-bind="click: goToReviewWriting">Write review</a>
+        <a data-role="button" class="restaurant-btn" data-bind="click: goToMap">View Location</a>
+        <a data-role="button" class="restaurant-btn" data-bind="click: goToReviews">View Reviews</a> 
     </div>
 </div>

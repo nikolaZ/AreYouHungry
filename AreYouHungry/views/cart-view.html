@@ -27,8 +27,6 @@
 
 <script id="menu-template1" type="text/x-kendo-template">
     <li class="cuisine-container">
-        <a data-role="button"
-           data-item-id="#: item.id#">#:kendo.toString(item.price, "c")#</a>
 
         <div id="touchSurface"
              data-role="touch"
@@ -40,9 +38,11 @@
         </div>
 
             <img src="#:item.photo#" class="item-photo" style="width:50px; height:50px;" />
-            <h2 class="item-title"><input id="numeric-box" data-bind="value: quantity" min="1" max="99" data-decimals="0" data-format="\\#" data-role="numerictextbox" /></h2>
-            <h2 class="item-title" data-bind="text: subtotal()"></h2>
-
-        <span data-bind="visible: deleteMode, click: deleteItem" data-role="button">Delete</span>
+            <h2 class="item-title"><input id="numeric-box" data-bind="value: quantity" min="1" max="99" data-decimals="0" data-format="\\#" data-role="numerictextbox" /></h2>          
+        <div>
+        <h2 class="item-subtotal">#:kendo.toString(item.price, "c")#</h2>
+        subtotal:
+        <h2 class="item-subtotal" data-bind="text: subtotal()"></h2></div>
+        <span data-bind="visible: deleteMode, click: deleteItem" data-role="button" data-icon="trash" class="trash">Remove All</span>
     </li>
 </script>

@@ -22,10 +22,26 @@
         return header;
     }
 
+    var beep = function (count) {
+        navigator.notification.beep(count);
+    };
+
+    var closeErrorModal = function () {
+        $("#error-view").show().data().kendoMobileModalView.close();
+    }
+
+    var showError = function (message) {
+        $("#error-view").find("#message").text(message);
+        $("#error-view").show().data().kendoMobileModalView.open();
+    }
+
     a.utils = {
         formatDate: formatDate,
         formatMoney: formatMoney,
-        getAuthHeader: getAuthHeader
+        getAuthHeader: getAuthHeader,
+        beep: beep,
+        closeErrorModal: closeErrorModal,
+        showError: showError
     }
 
 }(app))

@@ -9,27 +9,16 @@
     <header data-role="header">
         <div data-role="navbar">
             <a data-role="backbutton" data-align="left">Back</a>
-            <a data-role="button" data-rel="drawer" href="#my-drawer" data-icon="drawer-button" data-align="right"></a>
             <span data-role="view-title"></span>
         </div>
     </header>
 
-    <div data-role="content">
-        <input type="text" placeholder="Username" data-bind="value: loginUsername" />
-        <input type="password" placeholder="Password" data-bind="value: loginPassword" />
-        <a data-role="button" data-bind="click: login">Log In</a>
-        <a data-bind="click: register" data-role="button">Register</a>
+    <div data-role="content" id="login-form">
+        <input type="text" placeholder="Username" data-bind="value: loginUsername" class="account-input"
+                name="username" required />
+        <input type="password" placeholder="Password" data-bind="value: loginPassword" class="account-input"
+                name="password" required />
+        <a data-role="button" data-bind="click: login" class="login">Log In</a>
+        <a data-bind="click: register" data-role="button" class="register">Register</a>
     </div>
-</div>
-
-<div data-role="drawer" id="my-drawer" style="width: 180px" data-position="right">
-    <ul data-role="listview" data-type="group">
-        <li>
-            Account
-            <ul>
-                <li data-icon="settings">Settings</li>
-                <li data-icon="off">Log Out</li>
-            </ul>
-        </li>
-    </ul>
 </div>

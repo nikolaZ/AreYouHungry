@@ -51,10 +51,13 @@ namespace AreYouHungry.Services.Models
 
         [Required]
         [Display(Name = "E-mail")]
+        [DataType(DataType.EmailAddress, ErrorMessage = "Email is not valid!")]
+        [RegularExpression(@"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", ErrorMessage = "Email is not valid!")]
         public string Email { get; set; }
 
         [Required]
         [Display(Name = "Phone Number")]
+        [DataType(DataType.PhoneNumber, ErrorMessage = "Phone Number is not valid!")]
         public string Phone { get; set; }
     }
 

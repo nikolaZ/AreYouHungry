@@ -30,7 +30,6 @@
     };
 
     function goToMenu() {
-        debugger
         kendoApp.navigate("views/menu-view.html#menu-view?id=" + this.currentRestaurant.id);
     };
 
@@ -60,7 +59,6 @@
     }
 
     function menuInit(e) {
-        debugger
         kendo.bind(e.view.element, viewModel);
         var id = parseInt(e.view.params.id);
         httpRequest.getJSON(app.servicesBaseUrl + "restaurants/" + id + "/menu")
@@ -114,7 +112,6 @@
     function doOnOrientationChange() {
         switch (window.orientation) {
             case -90:
-                debugger
                 var images = $(document).find(".slide-image");
                 images.removeClass("vertical");
                 images.addClass("horizontal");
@@ -153,14 +150,14 @@
 
     a.gallery = {
         swipe: function (e) {
-            var cc = $(document).find("#container");
+            var container = $(document).find("#container");
             var imgCount = viewModel.get("currentPhotos").length;
 
             if (e.direction == "right") {
-                slideBy1(cc, 1, imgCount)
+                slideBy1(container, -1, imgCount)
             }
             else {
-                slideBy1(cc, -1, imgCount)
+                slideBy1(container, 1, imgCount)
             }
         },
         hold: function () {

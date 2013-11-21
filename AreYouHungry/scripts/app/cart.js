@@ -35,7 +35,6 @@
 
             setBadge(totalPrice);
 
-            // TODO Refactoring of statement
             viewModel.set("total", kendo.toString(parseFloat(totalPrice), "c"));
             viewModel.set("totalRaw", totalPrice);
             viewModel.set("items", items);
@@ -92,7 +91,6 @@
         cartItems.remove(dataItem);
 
         // TODO: refactoring
-        debugger
         var c = _view.scrollerContent.height();
         var cc = _view.scroller.element.height();
         var u = _view.scroller.scrollTop;
@@ -107,7 +105,12 @@
     }
 
     function checkout() {
-        // TODO: check for user and throw exception
+        var auth = sessionStorage["accessToken"];
+
+        if (!(auth && auth.length > 0)) {
+            a.utils.showError("You have to login first to checkout your cart items.");
+            return false;
+        }
 
         var model = {
             total: viewModel.get("totalRaw"),
@@ -132,10 +135,16 @@
         var header = {
             Authorization: "Bearer " + token
         };
+
         httpRequest.postJSON(a.servicesBaseUrl + "cartlogs", model, header)
             .then(function () {
-                console.log("yes");
-        })
+
+                a.utils.beep(1);
+                kendoApp.navigate("views/account-view.html#account-view");
+
+            }, function (error) {
+                a.utils.showError("Failed to checkout your cart items. Please, try again later.");
+            })
     };
 
     var getQuantity = function (item) {

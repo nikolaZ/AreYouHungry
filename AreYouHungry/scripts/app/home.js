@@ -14,12 +14,6 @@ var app = app || {};
             httpRequest.getJSON(app.servicesBaseUrl + "restaurants/top")
             .then(function (topRestaurants) {
 
-                // test purposes
-                //setTimeout(function () {
-                //    kendoApp.hideLoading();
-
-                //}, 4000);
-
                 kendoApp.hideLoading();
 
                 viewModel.set("topRestaurants", topRestaurants);
@@ -36,9 +30,5 @@ var app = app || {};
         a.home = {
             init: init
         };
-
-        a.closeErrorModal = function () {
-            $("#error-view").show().data().kendoMobileModalView.close();
-        }
 
 }(app, kendoApp.app));

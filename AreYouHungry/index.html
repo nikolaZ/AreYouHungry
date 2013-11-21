@@ -3,8 +3,8 @@
     <head>
         <title></title>
         <meta charset="utf-8" />
-        <!--<link href="scripts/libs/kendo/styles/kendo.common.min.css" rel="stylesheet" />
-        <link href="scripts/libs/kendo/styles/kendo.default.min.css" rel="stylesheet" />-->
+        <link href="scripts/libs/kendo/styles/kendo.common.min.css" rel="stylesheet" />
+        <link href="scripts/libs/kendo/styles/kendo.default.min.css" rel="stylesheet" />
         <link href="scripts/libs/kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
         <link href="styles/main.css" rel="stylesheet"/>
         <link href="styles/app.css" rel="stylesheet" />
@@ -54,30 +54,32 @@
             </ul>
         </div>
         
-        <script type="text/x-kendo-template" id="restaurants-template" >
+        <script type="text/x-kendo-template" id="restaurants-template">
+            <li class="container">
                 <a class="details-link"
                    data-role="listview-link"
                    href="views/restaurant-view.html\\#details?id=#: id#">
                     <img class="item-photo" src="#: logo#" />
                     <h3 class="item-title">#: name#</h3>
-                    <!--<p class="item-info">#: address#</p>-->
+                    <p class="item-info">#: address#</p>
                     <div class="star">
                         <span class="rating">#:rating#</span>
                         <div class="rate" style="height: #: (5 - rating) * 12#px"></div>
                     </div>
                 </a>
+            </li>
         </script>
 
         <!--Error Modal View-->
-        <div data-role="modalview" id="error-view" data-title="Error" style="display: none; width: 95%; height: 90%;">
+        <div data-role="modalview" id="error-view" data-title="Error" style="display: none; width: 80%; height: 50%;">
             <div data-role="header">
                 <div data-role="navbar">
                     <span data-role="view-title"></span>
-                    <a data-click="app.closeErrorModal" data-role="button" data-align="right">Close</a>
+                    <a data-click="app.utils.closeErrorModal" data-role="button" data-align="right">Close</a>
                 </div>
             </div>
 
-            <div class="message"></div>
+            <div id="message"></div>
         </div>
 
         <!--Layout-->

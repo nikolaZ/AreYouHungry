@@ -24,8 +24,7 @@
     }
 
     function initMap(restaurant){
-        // TODO: get latitude and longitude from restaurant
-        debugger
+
         var lat = restaurant.latitude;
         var long = restaurant.longitude;
         var mapOptions = {
@@ -55,6 +54,8 @@
         var infowindow = new google.maps.InfoWindow({
             content: "<strong>" + restaurant.name + "</strong>"
         });
+
+        _lastMarker.setIcon("styles/images/restaurant-red.png");
 
         google.maps.event.addListener(_lastMarker, 'click', function () {
             infowindow.open(map, _lastMarker);
